@@ -112,6 +112,14 @@ input {
   -webkit-text-fill-color: transparent;
 }
 
+.talks-highlight {
+  color: #0a3f4b;
+  background: linear-gradient(90deg, #091124 0%, #0a2835 44%, #0a5664 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .manifest-photo {
   box-shadow: none;
 }
@@ -135,12 +143,14 @@ input {
 
 .domain-card {
   background:
-    radial-gradient(circle at 31% 17%, rgba(255, 255, 255, 0.022), transparent 19%),
-    radial-gradient(circle at 76% 64%, rgba(255, 255, 255, 0.02), transparent 22%),
-    radial-gradient(circle at 66% 88%, rgba(255, 255, 255, 0.015), transparent 16%),
-    linear-gradient(180deg, rgba(18, 21, 38, 0.96), rgba(8, 12, 24, 0.985));
+    radial-gradient(circle at 24% 16%, rgba(255, 255, 255, 0.02), transparent 18%),
+    radial-gradient(circle at 71% 18%, rgba(255, 255, 255, 0.016), transparent 17%),
+    radial-gradient(circle at 82% 58%, rgba(255, 255, 255, 0.018), transparent 18%),
+    radial-gradient(circle at 22% 74%, rgba(255, 255, 255, 0.012), transparent 20%),
+    radial-gradient(circle at 66% 88%, rgba(255, 255, 255, 0.012), transparent 16%),
+    linear-gradient(180deg, rgba(19, 23, 41, 0.97), rgba(9, 13, 26, 0.99));
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.035),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
     0 18px 42px rgba(0, 0, 0, 0.12);
   position: relative;
   overflow: hidden;
@@ -152,10 +162,12 @@ input {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 28% 24%, rgba(255, 255, 255, 0.026), transparent 18%),
-    radial-gradient(circle at 82% 60%, rgba(255, 255, 255, 0.014), transparent 22%),
-    radial-gradient(circle at 72% 86%, rgba(255, 255, 255, 0.012), transparent 18%);
-  filter: blur(22px);
+    radial-gradient(circle at 18% 26%, rgba(255, 255, 255, 0.022), transparent 18%),
+    radial-gradient(circle at 46% 12%, rgba(255, 255, 255, 0.018), transparent 16%),
+    radial-gradient(circle at 84% 30%, rgba(255, 255, 255, 0.016), transparent 17%),
+    radial-gradient(circle at 78% 70%, rgba(255, 255, 255, 0.014), transparent 20%),
+    radial-gradient(circle at 30% 86%, rgba(255, 255, 255, 0.012), transparent 22%);
+  filter: blur(28px);
 }
 
 .domain-card::after {
@@ -163,9 +175,10 @@ input {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 18% 82%, rgba(5, 10, 23, 0.36), transparent 20%),
-    radial-gradient(circle at 74% 74%, rgba(255, 255, 255, 0.016), transparent 16%);
-  opacity: 0.9;
+    radial-gradient(circle at 24% 82%, rgba(4, 8, 20, 0.44), transparent 22%),
+    radial-gradient(circle at 68% 64%, rgba(10, 14, 28, 0.28), transparent 26%),
+    radial-gradient(circle at 86% 86%, rgba(255, 255, 255, 0.012), transparent 18%);
+  opacity: 0.96;
 }
 
 .domain-card > * {
@@ -175,6 +188,90 @@ input {
 
 .domain-card-panel {
   transform-origin: 24% 18%;
+}
+
+.evidence-chart-card {
+  min-height: 656px;
+  background:
+    radial-gradient(circle at 84% 48%, rgba(7, 84, 96, 0.34), transparent 42%),
+    radial-gradient(circle at 40% 34%, rgba(12, 22, 44, 0.42), transparent 36%),
+    linear-gradient(135deg, #050615 0%, #07111f 45%, #052b35 100%);
+  isolation: isolate;
+}
+
+.evidence-chart-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 28% 34%, rgba(255, 255, 255, 0.026), transparent 14%),
+    radial-gradient(circle at 86% 72%, rgba(255, 255, 255, 0.018), transparent 18%);
+  filter: blur(24px);
+  opacity: 0.52;
+}
+
+.evidence-chart-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(3, 5, 17, 0.32), transparent 40%, rgba(3, 39, 48, 0.14)),
+    radial-gradient(circle at 50% 100%, rgba(0, 0, 0, 0.18), transparent 38%);
+  pointer-events: none;
+}
+
+.evidence-chart-card-soft {
+  background:
+    linear-gradient(135deg, #ffffff 0%, #f8f9fb 48%, #edf0f3 100%);
+}
+
+.evidence-chart-card-soft::before {
+  background:
+    radial-gradient(circle at 72% 18%, rgba(255, 255, 255, 0.88), transparent 24%),
+    radial-gradient(circle at 20% 88%, rgba(255, 255, 255, 0.94), transparent 34%);
+  filter: blur(18px);
+  opacity: 0.9;
+}
+
+.evidence-chart-card-soft::after {
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.52), transparent 44%, rgba(9, 13, 33, 0.035)),
+    radial-gradient(circle at 72% 74%, rgba(9, 13, 33, 0.035), transparent 32%);
+}
+
+.evidence-line {
+  stroke-dasharray: 620;
+  stroke-dashoffset: 620;
+  animation: drawEvidenceLine 1.45s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+
+.evidence-point {
+  opacity: 0;
+  transform: scale(0.72);
+  transform-origin: center;
+  animation: revealEvidencePoint 500ms ease forwards;
+  animation-delay: 720ms;
+}
+
+.evidence-point-delay-1 {
+  animation-delay: 940ms;
+}
+
+.evidence-point-delay-2 {
+  animation-delay: 1160ms;
+}
+
+@keyframes drawEvidenceLine {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes revealEvidencePoint {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .network-grid {
@@ -212,34 +309,14 @@ input {
   opacity: 1;
 }
 
-.archive-card {
-  transition:
-    border-color 220ms ease,
-    box-shadow 220ms ease,
-    transform 220ms ease,
-    color 220ms ease;
-}
-
-.archive-card-idle {
-  border-color: rgba(9, 13, 33, 0.1);
-  background: white;
-}
-
-.archive-card-idle:hover {
-  border-color: rgba(10, 151, 166, 0.9);
-  box-shadow: 0 14px 30px rgba(10, 151, 166, 0.12);
-  transform: translateY(-1px);
-}
-
-.archive-card-idle:hover .archive-badge {
-  background: rgba(10, 151, 166, 0.1);
-  color: var(--accent);
-}
-
-.archive-card-idle:hover .archive-arrow {
-  border-color: rgba(10, 151, 166, 0.9);
-  background: var(--accent);
-  color: white;
+.sert-panel {
+  background:
+    linear-gradient(90deg, rgba(8, 166, 170, 0.42), rgba(8, 166, 170, 0) 34%) top/100% 3px no-repeat,
+    radial-gradient(circle at 16% 8%, rgba(8, 166, 170, 0.09), transparent 24%),
+    linear-gradient(180deg, rgba(14, 17, 32, 0.94), rgba(8, 10, 24, 0.98));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.035),
+    0 24px 58px rgba(0, 0, 0, 0.18);
 }
 
 @media (max-width: 1024px) {

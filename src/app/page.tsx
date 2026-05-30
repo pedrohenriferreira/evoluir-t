@@ -1,7 +1,19 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowRight, ArrowUpRight, Mail } from "lucide-react";
+import {
+  Activity,
+  ArrowRight,
+  ArrowUpRight,
+  BarChart3,
+  Briefcase,
+  CheckCircle2,
+  Heart,
+  Mail,
+  Mic,
+  Shield,
+  Users,
+} from "lucide-react";
 
 const domains = [
   {
@@ -30,13 +42,68 @@ const domains = [
   },
 ];
 
-const archiveItems = [
-  { title: "Psicologia da Liderança", count: "42 publicações" },
-  { title: "Design de Culturas", count: "38 publicações" },
-  { title: "Bem-estar e Performance", count: "56 publicações" },
-  { title: "Diversidade Sistêmica", count: "24 publicações" },
-  { title: "O Futuro do Trabalho", count: "61 publicações" },
-  { title: "Ética e IA no RH", count: "19 publicações" },
+const signatureTopics = [
+  "A Psicologia da Liderança Adaptativa",
+  "Segurança Psicológica na Prática",
+  "Burnout, Resiliência e Alta Performance Sustentável",
+  "O Futuro do Trabalho é Humano",
+];
+
+const mentalHealthRoi = [
+  {
+    stage: "Reativo",
+    value: "4.1x",
+    description: "apoio depois da deterioração",
+  },
+  {
+    stage: "Proativo",
+    value: "4.2x",
+    description: "suporte em estágio inicial",
+  },
+  {
+    stage: "Universal",
+    value: "6.3x",
+    description: "cultura, prevenção e conscientização",
+  },
+];
+
+const sertFeatures = [
+  {
+    title: "Métricas de Adesão",
+    description:
+      "Monitore o engajamento real das iniciativas de bem-estar com dados precisos e contínuos.",
+    Icon: Activity,
+  },
+  {
+    title: "Mapeamento de Riscos",
+    description:
+      "Identifique sinais precoces de burnout e esgotamento antes que se tornem problemas crônicos.",
+    Icon: Shield,
+  },
+  {
+    title: "Prioridades de Cuidado",
+    description:
+      "Direcione seus recursos para as áreas e times que mais precisam de intervenção no momento.",
+    Icon: Heart,
+  },
+];
+
+const sertAudienceCards = [
+  {
+    title: "Para o RH",
+    description: "Visibilidade total em tempo real.",
+    Icon: Users,
+  },
+  {
+    title: "Para a Liderança",
+    description: "Ferramentas práticas de gestão.",
+    Icon: Briefcase,
+  },
+  {
+    title: "Para o Colaborador",
+    description: "Acolhimento e privacidade.",
+    Icon: Heart,
+  },
 ];
 
 const readingCards = [
@@ -79,15 +146,16 @@ export default function Home() {
               <a href="#manifesto" className="hover:text-[var(--ink)]">Manifesto</a>
               <a href="#areas" className="hover:text-[var(--ink)]">Áreas</a>
               <a href="#pesquisas" className="hover:text-[var(--ink)]">Pesquisas</a>
-              <a href="#biblioteca" className="hover:text-[var(--ink)]">Biblioteca</a>
+              <a href="#metodo-sert" className="hover:text-[var(--ink)]">Método SERT</a>
+              <a href="#palestras" className="hover:text-[var(--ink)]">Palestras</a>
             </nav>
           </div>
 
           <a
-            href="#newsletter"
+            href="#palestras"
             className="hidden items-center gap-2 text-[14px] font-medium text-[var(--ink)] md:inline-flex"
           >
-            Assinar Newsletter
+            Contrate nossos serviços
             <ArrowRight className="h-4 w-4" />
           </a>
         </div>
@@ -287,24 +355,25 @@ export default function Home() {
               Inteligência & Dados
             </div>
             <h2 className="mt-8 max-w-[560px] text-[3.2rem] font-semibold leading-[0.96] tracking-[-0.07em] md:text-[4.3rem]">
-              A evidência por trás da evolução.
+              Saúde mental também é dado de gestão.
             </h2>
             <p className="mt-8 text-[1.17rem] leading-[1.8] text-[var(--muted)]">
-              Nossa equipe de pesquisadores coleta, analisa e traduz dados complexos sobre o
-              mercado de trabalho em insights acionáveis. Transformamos intuição em evidência.
+              Acompanhar o bem-estar psicológico dos colaboradores reduz perdas invisíveis,
+              orienta intervenções precoces e transforma cuidado em produtividade sustentável.
+              A evolução começa quando a empresa enxerga sinais antes que eles virem crise.
             </p>
 
-            <div className="mt-9 grid max-w-[640px] grid-cols-2 gap-6 border-t border-[rgba(11,15,33,0.08)] pt-9">
+            <div className="mt-9 grid max-w-[640px] grid-cols-1 gap-6 border-t border-[rgba(11,15,33,0.08)] pt-9 sm:grid-cols-2">
               <div>
-                <p className="text-[4rem] font-semibold tracking-[-0.08em] text-[var(--ink)]">84%</p>
+                <p className="text-[3.2rem] font-semibold tracking-[-0.08em] text-[var(--ink)] md:text-[4rem]">US$1 tri</p>
                 <p className="mt-2 text-[1rem] leading-7 text-[var(--muted)]">
-                  Das empresas repensando modelos de liderança.
+                  em produtividade perdida por depressão e ansiedade a cada ano, segundo a OMS.
                 </p>
               </div>
               <div>
-                <p className="text-[4rem] font-semibold tracking-[-0.08em] text-[var(--ink)]">2.4x</p>
+                <p className="text-[3.2rem] font-semibold tracking-[-0.08em] text-[var(--ink)] md:text-[4rem]">4.7x</p>
                 <p className="mt-2 text-[1rem] leading-7 text-[var(--muted)]">
-                  Aumento na retenção em culturas de alta confiança.
+                  de retorno médio para cada £1 investido em saúde mental no trabalho.
                 </p>
               </div>
             </div>
@@ -313,27 +382,88 @@ export default function Home() {
               href="#newsletter"
               className="mt-14 inline-flex items-center justify-center rounded-full bg-[#090c1d] px-8 py-4 text-[1rem] font-medium text-white shadow-[0_14px_32px_rgba(9,12,29,0.14)]"
             >
-              Acessar Relatório Anual
+              Conversar sobre diagnóstico
             </a>
           </div>
 
-          <div className="relative overflow-hidden rounded-[1.9rem] bg-[linear-gradient(145deg,#19002d_0%,#120022_35%,#07102d_100%)] p-8 shadow-[0_26px_65px_rgba(18,0,46,0.18)]">
-            <div className="absolute inset-0 opacity-90">
-              <div className="network-grid" />
-            </div>
-            <div className="relative">
-              <div className="ml-auto flex w-fit items-center gap-2 rounded-full bg-[rgba(255,255,255,0.84)] px-5 py-3 text-[14px] font-medium text-[var(--ink)]">
-                <span className="h-2.5 w-2.5 rounded-full bg-[var(--soft-accent)]" />
-                LIVE DATA
+          <div className="evidence-chart-card evidence-chart-card-soft relative overflow-hidden rounded-[1.7rem] p-8 shadow-[0_22px_54px_rgba(7,12,30,0.08)] md:p-10">
+            <div className="relative z-10">
+              <div className="ml-auto flex w-fit items-center gap-2 rounded-full border border-[rgba(11,15,33,0.08)] bg-white/86 px-5 py-3 text-[14px] font-medium text-[var(--ink)] shadow-[0_12px_26px_rgba(9,13,33,0.05)]">
+                <span className="h-2.5 w-2.5 rounded-full bg-[#58dce4]" />
+                DADOS REAIS
               </div>
 
-              <div className="mt-[18rem] max-w-[360px] rounded-[1.5rem] bg-[rgba(219,211,241,0.92)] px-6 py-6 text-[var(--ink)] shadow-[0_18px_40px_rgba(20,12,51,0.22)]">
-                <div className="h-2 w-full overflow-hidden rounded-full bg-white/60">
-                  <div className="h-full w-[70%] rounded-full bg-[linear-gradient(90deg,#0ea6a4,#58d2ff)]" />
-                </div>
-                <p className="mt-5 text-[1.15rem] font-medium">Índice de Adaptação Cultural</p>
-                <p className="mt-2 text-[15px] text-[rgba(11,15,33,0.56)]">Atualizado neste trimestre</p>
+              <div className="mt-11">
+                <p className="text-[0.82rem] font-medium uppercase tracking-[0.22em] text-[#0a97a6]">
+                  Retorno por maturidade da intervenção
+                </p>
+                <h3 className="mt-5 max-w-[570px] text-[1.95rem] font-semibold leading-[1.06] tracking-[-0.075em] text-[var(--ink)] md:text-[2.25rem]">
+                  Programas preventivos performam melhor que ações apenas reativas.
+                </h3>
               </div>
+
+              <div className="relative mt-10 h-[280px] rounded-[1.4rem] p-5 md:h-[300px]">
+                <div className="absolute inset-x-5 bottom-[58px] h-px bg-[rgba(9,13,33,0.08)]" />
+                <div className="absolute inset-x-5 bottom-[122px] h-px bg-[rgba(9,13,33,0.08)]" />
+                <div className="absolute inset-x-5 bottom-[186px] h-px bg-[rgba(9,13,33,0.08)]" />
+
+                <svg className="h-full w-full overflow-visible" viewBox="0 0 540 250" aria-hidden="true">
+                  <path
+                    d="M44 205 C138 176 184 124 270 101 C356 83 416 52 492 30"
+                    className="evidence-line"
+                    fill="none"
+                    stroke="url(#evidenceGradient)"
+                    strokeLinecap="round"
+                    strokeWidth="5"
+                  />
+                  <defs>
+                    <linearGradient id="evidenceGradient" x1="44" x2="492" y1="205" y2="30">
+                      <stop stopColor="#087f8b" />
+                      <stop offset="0.52" stopColor="#0aadb8" />
+                      <stop offset="1" stopColor="#19d8de" />
+                    </linearGradient>
+                  </defs>
+                  <g className="evidence-point">
+                    <circle cx="44" cy="205" r="8" fill="#0aadb8" />
+                    <circle cx="44" cy="205" r="17" fill="rgba(10,173,184,0.16)" />
+                  </g>
+                  <g className="evidence-point evidence-point-delay-1">
+                    <circle cx="270" cy="101" r="8" fill="#12c2c5" />
+                    <circle cx="270" cy="101" r="17" fill="rgba(18,194,197,0.16)" />
+                  </g>
+                  <g className="evidence-point evidence-point-delay-2">
+                    <circle cx="492" cy="30" r="8" fill="#19d8de" />
+                    <circle cx="492" cy="30" r="17" fill="rgba(25,216,222,0.18)" />
+                  </g>
+                </svg>
+
+                <div className="absolute bottom-5 left-5 text-[12px] font-medium uppercase tracking-[0.15em] text-[rgba(102,113,135,0.74)]">
+                  reativo
+                </div>
+                <div className="absolute bottom-5 left-[45%] text-[12px] font-medium uppercase tracking-[0.15em] text-[rgba(102,113,135,0.74)]">
+                  proativo
+                </div>
+                <div className="absolute bottom-5 right-5 text-[12px] font-medium uppercase tracking-[0.15em] text-[rgba(102,113,135,0.74)]">
+                  universal
+                </div>
+              </div>
+
+              <div className="mt-5 grid gap-3 md:grid-cols-3">
+                {mentalHealthRoi.map((item) => (
+                  <div key={item.stage} className="rounded-[1rem] border border-white/70 bg-white/62 p-4 shadow-[0_14px_30px_rgba(9,13,33,0.045)] md:p-5">
+                    <p className="text-[1.85rem] font-semibold tracking-[-0.07em] text-[var(--ink)]">{item.value}</p>
+                    <p className="mt-2 text-[0.82rem] font-medium uppercase tracking-[0.15em] text-[#0a97a6]">
+                      {item.stage}
+                    </p>
+                    <p className="mt-3 text-[0.83rem] leading-5 text-[rgba(102,113,135,0.84)]">{item.description}</p>
+                  </div>
+                ))}
+              </div>
+
+              <p className="mt-6 text-[12px] leading-5 text-[rgba(102,113,135,0.74)]">
+                Fontes: OMS/ILO sobre perdas globais por depressão e ansiedade; Deloitte UK
+                Mental Health and Employers 2024, ROI médio e por estágio de intervenção.
+              </p>
             </div>
           </div>
         </div>
@@ -367,88 +497,237 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-t border-[rgba(11,15,33,0.06)] bg-white">
-        <div className="mx-auto max-w-[1360px] px-5 py-24 md:px-10">
-          <div className="max-w-[690px]">
-            <h2 className="text-[3.05rem] font-semibold leading-none tracking-[-0.07em] md:text-[4.2rem]">
-              Acervo Digital
+      <section id="metodo-sert" className="relative overflow-hidden bg-[#050716] text-white">
+        <div className="mx-auto max-w-[1360px] px-5 py-20 md:px-10 md:py-24">
+          <div className="mx-auto max-w-[820px] text-center">
+            <div className="inline-flex items-center gap-3 text-[0.82rem] font-medium uppercase tracking-[0.16em] text-[#14d6ea]">
+              <span className="h-px w-8 bg-[#14d6ea]" />
+              Nossa Plataforma
+              <span className="h-px w-8 bg-[#14d6ea]" />
+            </div>
+
+            <h2 className="mt-7 text-[2.65rem] font-semibold leading-tight text-white md:text-[4rem]">
+              Conheça o <span className="text-[#19d8de]">Método SERT</span>
             </h2>
-            <p className="mt-5 max-w-[720px] text-[1.18rem] leading-[1.7] text-[var(--muted)]">
-              Explore nossa biblioteca de ensaios, pesquisas empíricas e estudos de caso
-              organizados por eixos temáticos.
+            <p className="mx-auto mt-5 max-w-[760px] text-[1.08rem] leading-[1.62] text-white/70">
+              Mais do que uma metodologia, uma plataforma inteligente que ajuda sua empresa a
+              acompanhar adesão, mapear sinais de risco e definir prioridades de cuidado em uma
+              experiência unificada.
             </p>
           </div>
 
-          <div className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {archiveItems.map((item) => (
-              <article
-                key={item.title}
-                className="archive-card archive-card-idle group min-h-[184px] rounded-[1.8rem] border px-8 py-8"
-              >
-                <div className="flex items-start justify-between gap-4">
-                  <span className="archive-badge rounded-full bg-[rgba(11,15,33,0.04)] px-4 py-2 text-[14px] text-[var(--muted)]">
-                    {item.count}
-                  </span>
-                  <span
-                    className="archive-arrow flex h-11 w-11 items-center justify-center rounded-full border border-[rgba(11,15,33,0.12)] text-[rgba(11,15,33,0.38)] transition-all"
-                  >
-                    <ArrowRight className="h-4 w-4 rotate-[-90deg] group-hover:hidden" />
-                    <ArrowUpRight className="hidden h-4 w-4 group-hover:block" />
-                  </span>
-                </div>
+          <div className="mt-18 grid gap-14 lg:grid-cols-[minmax(360px,490px)_minmax(0,1fr)] lg:items-center">
+            <div>
+              <div className="space-y-10">
+                {sertFeatures.map((feature) => (
+                  <div key={feature.title} className="grid grid-cols-[54px_minmax(0,1fr)] gap-5">
+                    <div className="flex h-[50px] w-[50px] items-center justify-center rounded-[0.9rem] border border-white/12 bg-white/[0.045] text-[#19d8de]">
+                      <feature.Icon className="h-5 w-5" strokeWidth={1.9} />
+                    </div>
+                    <div>
+                      <h3 className="text-[1.1rem] font-semibold text-white">{feature.title}</h3>
+                      <p className="mt-2 max-w-[470px] text-[0.98rem] leading-[1.62] text-white/54">
+                        {feature.description}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
 
-                <h3 className="mt-18 max-w-[360px] text-[1.55rem] font-medium tracking-[-0.06em] text-[var(--ink)]">
-                  {item.title}
-                </h3>
-              </article>
-            ))}
+              <a
+                href="https://metodo-sert-rzvb.vercel.app/"
+                className="mt-14 inline-flex h-[58px] items-center justify-center gap-3 rounded-full bg-[#0aaeb0] px-8 text-[0.98rem] font-semibold text-[#031018] shadow-[0_18px_34px_rgba(10,174,176,0.22)] hover:bg-[#12c2c5]"
+              >
+                Conheça mais o SERT
+                <ArrowRight className="h-4 w-4" />
+              </a>
+            </div>
+
+            <div className="sert-panel rounded-[1.45rem] border border-white/10 p-7 md:p-8">
+              <div className="flex items-start justify-between gap-6">
+                <div>
+                  <div className="flex items-center gap-3">
+                    <BarChart3 className="h-5 w-5 text-[#12c8e8]" strokeWidth={2} />
+                    <h3 className="text-[1.45rem] font-semibold text-white">Ecossistema SERT</h3>
+                  </div>
+                  <p className="mt-1 text-[0.82rem] text-white/48">
+                    Visão integrada de saúde corporativa
+                  </p>
+                </div>
+                <div className="mt-2 flex items-center gap-2.5">
+                  <span className="h-2.5 w-2.5 rounded-full bg-[#ff0a68]" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-[#ff9b18]" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-[#16bec8]" />
+                </div>
+              </div>
+
+              <div className="mt-12 grid gap-4 md:grid-cols-3">
+                {sertAudienceCards.map((card) => (
+                  <div
+                    key={card.title}
+                    className="rounded-[0.8rem] border border-white/10 bg-white/[0.055] px-5 py-6"
+                  >
+                    <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#0a6572]/55 text-[#16d7e1]">
+                      <card.Icon className="h-4.5 w-4.5" strokeWidth={1.9} />
+                    </div>
+                    <h4 className="mt-6 text-[0.95rem] font-semibold text-white">{card.title}</h4>
+                    <p className="mt-3 text-[0.76rem] leading-5 text-white/42">{card.description}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-8 h-px bg-white/10" />
+
+              <div className="mt-8 space-y-5">
+                <div className="grid grid-cols-[minmax(0,1fr)_82px] items-center gap-4">
+                  <div className="h-2 overflow-hidden rounded-full bg-white/[0.065]">
+                    <div className="h-full w-[85%] rounded-full bg-[#0aaeb0]" />
+                  </div>
+                  <p className="font-mono text-[0.78rem] text-[#18dce7]">85% Saúde</p>
+                </div>
+                <div className="grid grid-cols-[minmax(0,1fr)_82px] items-center gap-4">
+                  <div className="h-2 overflow-hidden rounded-full bg-white/[0.065]">
+                    <div className="h-full w-[12%] rounded-full bg-[#ff0a68]" />
+                  </div>
+                  <p className="font-mono text-[0.78rem] text-[#ff2b78]">12% Alerta</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section id="newsletter" className="relative overflow-hidden bg-[radial-gradient(circle_at_top,rgba(8,186,223,0.18),transparent_24%),linear-gradient(90deg,#070b1d_0%,#081120_55%,#032733_100%)] text-white">
-        <div className="mx-auto max-w-[1360px] px-5 py-26 md:px-10">
-          <div className="mx-auto max-w-[800px] text-center">
-            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-[1.1rem] border border-white/15 bg-white/6 text-[var(--accent)] shadow-[0_16px_40px_rgba(0,0,0,0.18)]">
-              <Mail className="h-8 w-8" />
+      <section id="palestras" className="bg-white">
+        <div className="mx-auto grid max-w-[1360px] items-center gap-14 px-5 py-16 md:px-10 lg:grid-cols-[642px_minmax(0,1fr)] lg:gap-[58px]">
+          <div className="relative min-h-[800px] overflow-hidden rounded-[2rem] bg-[#8f8c95] shadow-[0_24px_70px_rgba(10,15,28,0.08)]">
+            <div
+              className="absolute inset-0 bg-cover bg-center"
+              style={{
+                backgroundImage: "url('/foto-palestras.png')",
+                backgroundPosition: "center center",
+              }}
+            />
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,10,22,0)_58%,rgba(7,8,22,0.78)_100%)]" />
+
+            <div className="absolute inset-x-[30px] bottom-[30px] rounded-[0.8rem] bg-[#0b0c1b] px-6 py-6 text-white shadow-[0_24px_50px_rgba(4,6,18,0.22)]">
+              <div className="flex items-start gap-4">
+                <div className="flex h-[44px] w-[44px] shrink-0 items-center justify-center rounded-full border border-[rgba(11,169,177,0.58)] bg-[rgba(10,151,166,0.22)] text-[var(--accent)]">
+                  <Mic className="h-5 w-5" />
+                </div>
+                <div>
+                  <h3 className="text-[1rem] font-semibold tracking-[-0.02em]">
+                    Elaine Ferreira:
+                  </h3>
+                  <p className="mt-2 max-w-[470px] text-[0.86rem] leading-[1.55] text-white/74">
+                    Transforme seu evento corporativo com insights baseados em ciência
+                    comportamental e dados reais.
+                  </p>
+                </div>
+              </div>
             </div>
-            <h2 className="mx-auto mt-8 max-w-[900px] text-[3.55rem] font-semibold leading-[0.95] tracking-[-0.08em] text-white md:text-[5rem]">
-              Conhecimento destilado,
-              <span className="block text-white/56">direto na sua caixa de entrada.</span>
+          </div>
+
+          <div className="max-w-[690px] lg:pl-0">
+            <div className="section-kicker">
+              <span className="section-kicker-line" />
+              Para o seu evento
+            </div>
+
+            <h2 className="mt-9 max-w-[700px] text-[2.95rem] font-semibold leading-[1.02] tracking-[-0.075em] text-[var(--ink)] md:text-[4rem]">
+              Eleve o nível do debate sobre{" "}
+              <span className="talks-highlight">pessoas e cultura.</span>
             </h2>
-            <p className="mx-auto mt-8 max-w-[720px] text-[1.2rem] leading-[1.75] text-white/68">
+
+            <p className="mt-7 max-w-[690px] text-[1.08rem] leading-[1.68] text-[var(--muted)]">
+              Nossas palestras e masterclasses não são motivacionais — são jornadas
+              intelectuais. Levamos ao palco a mesma profundidade de nossas pesquisas,
+              conectando psicologia, estratégia e o futuro do trabalho de forma provocativa e
+              memorável.
+            </p>
+
+            <div className="mt-12">
+              <p className="text-[0.95rem] font-semibold text-[var(--ink)]">
+                Temas de Assinatura:
+              </p>
+              <div className="mt-5 space-y-4">
+                {signatureTopics.map((topic) => (
+                  <div key={topic} className="flex items-center gap-3 text-[1rem] text-[var(--muted)]">
+                    <CheckCircle2 className="h-4.5 w-4.5 shrink-0 text-[var(--accent)]" />
+                    <span>{topic}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-14 flex flex-col gap-3 sm:flex-row">
+              <a
+                href="#newsletter"
+                className="inline-flex h-[54px] items-center justify-center gap-3 rounded-full bg-[#070a1b] px-8 text-[0.98rem] font-medium text-white shadow-[0_14px_28px_rgba(7,10,27,0.18)]"
+              >
+                Solicitar Orçamento
+                <ArrowRight className="h-4 w-4" />
+              </a>
+              <a
+                href="#newsletter"
+                className="inline-flex h-[54px] items-center justify-center rounded-full border border-[rgba(11,15,33,0.1)] bg-white px-8 text-[0.98rem] font-medium text-[var(--ink)]"
+              >
+                Ver Mídia Kit
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="newsletter"
+        className="relative overflow-hidden bg-[radial-gradient(ellipse_760px_430px_at_50%_43%,rgba(5,66,75,0.66)_0%,rgba(4,38,49,0.34)_42%,rgba(5,8,20,0.04)_72%,rgba(5,7,18,0)_100%),linear-gradient(90deg,#070817_0%,#050716_44%,#050716_62%,#060817_100%)] text-white"
+      >
+        <div className="mx-auto flex min-h-[632px] max-w-[1504px] justify-center px-5 pb-[98px] pt-[96px] md:px-10">
+          <div className="mx-auto max-w-[820px] text-center">
+            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-[1rem] border border-white/18 bg-white/[0.075] text-[#10bfe2] shadow-[0_14px_34px_rgba(0,0,0,0.18)]">
+              <Mail className="h-8 w-8" strokeWidth={2.2} />
+            </div>
+
+            <h2 className="mx-auto mt-9 max-w-[760px] text-[2.8rem] font-semibold leading-[0.98] tracking-[-0.055em] text-white md:text-[3.15rem]">
+              Conhecimento destilado,
+              <span className="block text-[#9ba2af]">direto na sua caixa de entrada.</span>
+            </h2>
+
+            <p className="mx-auto mt-7 max-w-[620px] text-[1.04rem] leading-[1.62] text-white/68">
               Junte-se a milhares de líderes e pesquisadores que recebem nossos insights semanais
               sobre o futuro do comportamento organizacional.
             </p>
 
-            <form className="mx-auto mt-12 flex max-w-[640px] flex-col gap-4 sm:flex-row">
+            <form className="mx-auto mt-10 flex max-w-[514px] flex-col gap-3.5 sm:flex-row">
               <input
                 type="email"
                 placeholder="seu.email@exemplo.com"
-                className="h-16 flex-1 rounded-full border border-white/10 bg-[rgba(255,255,255,0.04)] px-6 text-[1.05rem] text-white outline-none placeholder:text-white/28 focus:border-[var(--accent)]"
+                className="h-[58px] flex-1 rounded-full border border-white/10 bg-[rgba(255,255,255,0.055)] px-6 text-[1rem] text-white outline-none placeholder:text-white/28 focus:border-[rgba(16,191,226,0.55)]"
               />
               <button
                 type="submit"
-                className="h-16 rounded-full bg-[#18c3ea] px-10 text-[1.1rem] font-medium text-[#03111a] shadow-[0_18px_40px_rgba(24,195,234,0.24)]"
+                className="h-[58px] rounded-full bg-[#0ea8ab] px-10 text-[1rem] font-medium text-[#030f18] shadow-[0_14px_34px_rgba(14,168,171,0.23)]"
               >
                 Inscrever-se
               </button>
             </form>
-
-            <p className="mt-6 text-[14px] text-white/28">Sem spam. Apenas conteúdo de altíssimo nível.</p>
           </div>
         </div>
 
-        <footer className="border-t border-white/8">
-          <div className="mx-auto max-w-[1360px] px-5 py-18 md:px-10">
-            <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr_1fr_1fr]">
+        <footer>
+          <div className="mx-auto max-w-[1488px] px-5 md:px-10">
+            <div className="h-px bg-white/[0.08]" />
+          </div>
+
+          <div className="mx-auto max-w-[1488px] px-5 pb-8 pt-[84px] md:px-10">
+            <div className="grid gap-14 lg:grid-cols-[320px_240px_260px_260px] lg:justify-between">
               <div>
-                <a href="#top" className="text-[2.2rem] font-semibold leading-none tracking-[-0.05em]">
+                <a href="#top" className="text-[1.55rem] font-semibold leading-none tracking-[-0.04em]">
                   Evoluir-<span className="text-[var(--accent)]">T</span>
                 </a>
-                <p className="mt-8 max-w-[340px] text-[1.05rem] leading-[1.8] text-white/46">
-                  O hub definitivo de inteligência e pesquisa sobre pessoas, cultura e a
-                  evolução do trabalho.
+                <p className="mt-8 max-w-[320px] text-[0.93rem] leading-[1.85] text-white/46">
+                  Um ecossistema de pesquisa, reflexão e desenvolvimento sobre pessoas, cultura
+                  e os futuros do trabalho.
                 </p>
               </div>
 
@@ -462,15 +741,17 @@ export default function Home() {
               />
               <FooterColumn
                 title="Social"
-                items={["LinkedIn", "Twitter (X)", "Instagram", "Spotify (Podcast)"]}
+                items={["LinkedIn", "Twitter (X)", "Instagram"]}
               />
             </div>
 
-            <div className="mt-18 flex flex-col gap-6 border-t border-white/8 pt-8 text-[14px] text-white/34 md:flex-row md:items-center md:justify-between">
+            <div className="mt-[64px] h-px bg-white/[0.08]" />
+
+            <div className="flex flex-col gap-6 pt-8 text-[13px] text-white/32 md:flex-row md:items-center md:justify-between">
               <p>© 2026 Evoluir-T. Todos os direitos reservados.</p>
               <div className="flex items-center gap-8">
-                <a href="#top">Política de Privacidade</a>
-                <a href="#top">Termos de Uso</a>
+                <a href="/politica-de-privacidade">Política de Privacidade</a>
+                <a href="/termos-de-uso">Termos de Uso</a>
               </div>
             </div>
           </div>
@@ -517,8 +798,8 @@ function ReadingCard({
 function FooterColumn({ title, items }: { title: string; items: string[] }) {
   return (
     <div>
-      <p className="text-[1rem] font-medium uppercase tracking-[0.08em] text-white/82">{title}</p>
-      <div className="mt-8 space-y-5 text-[1.02rem] text-white/46">
+      <p className="text-[0.94rem] font-medium uppercase tracking-[0.08em] text-white/82">{title}</p>
+      <div className="mt-8 space-y-5 text-[0.93rem] text-white/46">
         {items.map((item) => (
           <a key={item} href="#top" className="block hover:text-white/76">
             {item}
