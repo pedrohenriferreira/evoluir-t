@@ -152,7 +152,7 @@ export default function Home() {
           </div>
 
           <a
-            href="#palestras"
+            href="/contrate-nossos-servicos"
             className="hidden items-center gap-2 text-[14px] font-medium text-[var(--ink)] md:inline-flex"
           >
             Contrate nossos serviços
@@ -535,7 +535,7 @@ export default function Home() {
               </div>
 
               <a
-                href="https://metodo-sert-rzvb.vercel.app/"
+                href="/contrate-nossos-servicos"
                 className="mt-14 inline-flex h-[58px] items-center justify-center gap-3 rounded-full bg-[#0aaeb0] px-8 text-[0.98rem] font-semibold text-[#031018] shadow-[0_18px_34px_rgba(10,174,176,0.22)] hover:bg-[#12c2c5]"
               >
                 Conheça mais o SERT
@@ -661,7 +661,7 @@ export default function Home() {
 
             <div className="mt-14 flex flex-col gap-3 sm:flex-row">
               <a
-                href="#newsletter"
+                href="/contrate-nossos-servicos"
                 className="inline-flex h-[54px] items-center justify-center gap-3 rounded-full bg-[#070a1b] px-8 text-[0.98rem] font-medium text-white shadow-[0_14px_28px_rgba(7,10,27,0.18)]"
               >
                 Solicitar Orçamento
