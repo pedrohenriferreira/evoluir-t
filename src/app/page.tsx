@@ -3,50 +3,74 @@
 import { useState } from "react";
 import {
   Activity,
+  ArrowDown,
   ArrowRight,
   ArrowUpRight,
   BarChart3,
+  Brain,
   Briefcase,
   CheckCircle2,
+  Flame,
+  Handshake,
   Heart,
   Mail,
+  MessagesSquare,
   Mic,
   Shield,
+  ShieldAlert,
   Users,
 } from "lucide-react";
 
-const domains = [
+const founderFocusAreas = [
+  "saúde mental organizacional",
+  "liderança",
+  "desenvolvimento humano",
+  "relações profissionais",
+  "perícia psicológica assistente técnica",
+];
+
+const painPoints = [
+  "líderes sobrecarregados",
+  "conflitos frequentes",
+  "equipes desmotivadas",
+  "estresse ocupacional",
+  "dificuldade de comunicação",
+  "afastamentos emocionais",
+  "baixa produtividade",
+  "riscos psicossociais",
+];
+
+const whoWeAreTopics = [
   {
     id: "01",
-    title: "Comportamento Organizacional",
+    title: "Psicologia Organizacional",
     description:
-      "Análise profunda das dinâmicas interpessoais, motivação e psicologia aplicada ao ambiente corporativo. Como indivíduos e grupos interagem e afetam o desempenho sistêmico.",
+      "Compreendemos como cultura, comportamento, clima e dinâmica de trabalho afetam a saúde das pessoas e a sustentabilidade dos resultados.",
   },
   {
     id: "02",
-    title: "Liderança Complexa",
+    title: "Saúde Mental no Trabalho",
     description:
-      "Estudos sobre tomada de decisão em contextos ambíguos, novas competências de liderança e os limites dos modelos lineares de gestão.",
+      "Atuamos na construção de ambientes mais seguros e conscientes, com foco em prevenção, acolhimento e fortalecimento emocional nas rotinas organizacionais.",
   },
   {
     id: "03",
-    title: "Cultura & Pertencimento",
+    title: "Desenvolvimento Humano",
     description:
-      "Investigações sobre pertencimento, inclusão, rituais culturais e os mecanismos que sustentam ambientes mais saudáveis e resilientes.",
+      "Apoiamos líderes e equipes no desenvolvimento de competências relacionais, amadurecimento emocional e maior qualidade nas interações de trabalho.",
   },
   {
     id: "04",
-    title: "Futuro do Trabalho",
+    title: "Gestão de Riscos Psicossociais",
     description:
-      "Pesquisas sobre modelos híbridos, integração de IA nas rotinas produtivas e as novas fronteiras da colaboração humana na era digital.",
+      "Mapeamos sinais críticos, fatores de adoecimento e vulnerabilidades organizacionais para orientar ações mais responsáveis e efetivas.",
   },
-];
-
-const signatureTopics = [
-  "A Psicologia da Liderança Adaptativa",
-  "Segurança Psicológica na Prática",
-  "Burnout, Resiliência e Alta Performance Sustentável",
-  "O Futuro do Trabalho é Humano",
+  {
+    id: "05",
+    title: "Visão Sistêmica das Relações",
+    description:
+      "Observamos a organização como um sistema vivo, onde comunicação, liderança, vínculos e contexto se influenciam mutuamente o tempo todo.",
+  },
 ];
 
 const mentalHealthRoi = [
@@ -69,70 +93,213 @@ const mentalHealthRoi = [
 
 const sertFeatures = [
   {
-    title: "Métricas de Adesão",
+    title: "S - Sistema",
     description:
-      "Monitore o engajamento real das iniciativas de bem-estar com dados precisos e contínuos.",
+      "Análise da cultura, estrutura e dinâmica organizacional.",
     Icon: Activity,
   },
   {
-    title: "Mapeamento de Riscos",
+    title: "E - Emoções",
     description:
-      "Identifique sinais precoces de burnout e esgotamento antes que se tornem problemas crônicos.",
-    Icon: Shield,
+      "Identificação dos fatores emocionais e psicossociais.",
+    Icon: Heart,
   },
   {
-    title: "Prioridades de Cuidado",
+    title: "R - Relações",
     description:
-      "Direcione seus recursos para as áreas e times que mais precisam de intervenção no momento.",
-    Icon: Heart,
+      "Mapeamento das relações, comunicação e liderança.",
+    Icon: Users,
+  },
+  {
+    title: "T - Transformação",
+    description:
+      "Intervenções práticas e desenvolvimento organizacional.",
+    Icon: BarChart3,
   },
 ];
 
 const sertAudienceCards = [
   {
-    title: "Para o RH",
-    description: "Visibilidade total em tempo real.",
-    Icon: Users,
+    title: "Abordagem sistêmica",
+    description: "Leitura integrada de cultura, vínculos, contexto e estrutura.",
+    Icon: Activity,
   },
   {
-    title: "Para a Liderança",
-    description: "Ferramentas práticas de gestão.",
+    title: "Diagnóstico estruturado",
+    description: "Metodologia própria para compreender padrões e prioridades.",
+    Icon: Shield,
+  },
+  {
+    title: "Indicadores organizacionais",
+    description: "Sinais concretos para orientar análise e tomada de decisão.",
     Icon: Briefcase,
   },
   {
-    title: "Para o Colaborador",
-    description: "Acolhimento e privacidade.",
+    title: "Desenvolvimento humano",
+    description: "Intervenções orientadas por amadurecimento relacional e emocional.",
     Icon: Heart,
+  },
+  {
+    title: "Prevenção psicossocial",
+    description: "Ações voltadas para redução de riscos e promoção de saúde.",
+    Icon: Users,
+  },
+  {
+    title: "Acompanhamento contínuo",
+    description: "Leitura recorrente de sinais e prioridades para sustentar a evolução organizacional.",
+    Icon: CheckCircle2,
   },
 ];
 
-const readingCards = [
+const serviceCards = [
   {
-    title: "A falácia da resiliência tóxica nas organizações de alta performance",
-    type: "Ensaio",
-    time: "8 min",
+    eyebrow: "Serviços",
+    title: "Consultoria em Saúde Mental Organizacional",
     image:
-      "https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=1400&q=80",
+      "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1400&q=80",
     large: true,
+    items: [
+      "diagnóstico psicossocial",
+      "análise de riscos",
+      "clima organizacional",
+      "desenvolvimento de lideranças",
+    ],
   },
   {
-    title: "Como a arquitetura de escritórios molda a segurança psicológica",
-    type: "Estudo de Caso",
-    time: "12 min",
+    eyebrow: "Liderança",
+    title: "Desenvolvimento de Lideranças",
     image:
-      "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1000&q=80",
+    items: [
+      "liderança consciente",
+      "comunicação",
+      "conflitos",
+      "inteligência emocional",
+    ],
   },
   {
-    title: "Diálogos sobre o fim da gestão por controle",
-    type: "Entrevista",
-    time: "15 min",
+    eyebrow: "Avaliação",
+    title: "Diagnóstico Organizacional",
     image:
-      "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1000&q=80",
+    prefix: "Inclui:",
+    items: ["questionários", "escalas", "dashboard", "relatório técnico"],
+  },
+  {
+    eyebrow: "Perícia Psicológica",
+    title: "Assistência Técnica em Perícia Psicológica",
+    image:
+      "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1000&q=80",
+    context:
+      "Atuação como psicóloga assistente técnica em processos envolvendo:",
+    items: [
+      "burnout",
+      "assédio moral",
+      "adoecimento ocupacional",
+      "danos psicológicos relacionados ao trabalho",
+    ],
+    secondaryPrefix: "Inclui:",
+    secondaryItems: [
+      "análise documental",
+      "formulação de quesitos",
+      "parecer técnico",
+      "acompanhamento pericial",
+    ],
+  },
+];
+
+const corporateTalkThemes = [
+  {
+    title: "Saúde Mental no Trabalho",
+    description: "Estresse, equilíbrio emocional e prevenção.",
+    Icon: Brain,
+    accentClass: "text-[#0a97a6]",
+    iconBgClass: "bg-[rgba(10,151,166,0.12)]",
+    pillClass: "text-[#0a97a6]",
+  },
+  {
+    title: "Liderança Consciente",
+    description: "Desenvolvimento de líderes mais humanos e estratégicos.",
+    Icon: Users,
+    accentClass: "text-[#126b7a]",
+    iconBgClass: "bg-[rgba(18,107,122,0.12)]",
+    pillClass: "text-[#126b7a]",
+  },
+  {
+    title: "Burnout e Estresse Ocupacional",
+    description: "Prevenção e gestão emocional.",
+    Icon: Flame,
+    accentClass: "text-[#c56d1f]",
+    iconBgClass: "bg-[rgba(197,109,31,0.12)]",
+    pillClass: "text-[#c56d1f]",
+  },
+  {
+    title: "Assédio Moral",
+    description: "Relações saudáveis e responsabilidade organizacional.",
+    Icon: ShieldAlert,
+    accentClass: "text-[#a53b54]",
+    iconBgClass: "bg-[rgba(165,59,84,0.12)]",
+    pillClass: "text-[#a53b54]",
+  },
+  {
+    title: "Comunicação e Relações Humanas",
+    description: "Melhoria da convivência e produtividade.",
+    Icon: MessagesSquare,
+    accentClass: "text-[#6a59b2]",
+    iconBgClass: "bg-[rgba(106,89,178,0.12)]",
+    pillClass: "text-[#6a59b2]",
+  },
+  {
+    title: "Cumplicidade Profissional e Resultados",
+    description: "Fortalecimento das relações e cultura organizacional.",
+    Icon: Handshake,
+    accentClass: "text-[#15806a]",
+    iconBgClass: "bg-[rgba(21,128,106,0.12)]",
+    pillClass: "text-[#15806a]",
+  },
+];
+
+const workflowSteps = [
+  {
+    step: "1. Diagnóstico",
+    title: "Diagnóstico",
+    description: "Entendemos o cenário organizacional.",
+    Icon: Activity,
+    accentClass: "text-[#0a97a6]",
+    iconBgClass: "bg-[rgba(10,151,166,0.12)]",
+    glowClass: "bg-[radial-gradient(circle_at_top_left,rgba(10,151,166,0.16),transparent_58%)]",
+  },
+  {
+    step: "2. Análise",
+    title: "Análise",
+    description: "Identificamos riscos e oportunidades.",
+    Icon: BarChart3,
+    accentClass: "text-[#126b7a]",
+    iconBgClass: "bg-[rgba(18,107,122,0.12)]",
+    glowClass: "bg-[radial-gradient(circle_at_top_left,rgba(18,107,122,0.14),transparent_58%)]",
+  },
+  {
+    step: "3. Intervenção",
+    title: "Intervenção",
+    description: "Aplicamos ações práticas.",
+    Icon: Briefcase,
+    accentClass: "text-[#c56d1f]",
+    iconBgClass: "bg-[rgba(197,109,31,0.12)]",
+    glowClass: "bg-[radial-gradient(circle_at_top_left,rgba(197,109,31,0.14),transparent_58%)]",
+  },
+  {
+    step: "4. Transformação",
+    title: "Transformação",
+    description: "Consolidamos mudanças e fortalecemos a evolução organizacional.",
+    Icon: CheckCircle2,
+    accentClass: "text-[#15806a]",
+    iconBgClass: "bg-[rgba(21,128,106,0.12)]",
+    glowClass: "bg-[radial-gradient(circle_at_top_left,rgba(21,128,106,0.14),transparent_58%)]",
   },
 ];
 
 export default function Home() {
-  const [activeDomain, setActiveDomain] = useState(domains[0]);
+  const [activeWhoWeAreTopic, setActiveWhoWeAreTopic] = useState(whoWeAreTopics[0]);
 
   return (
     <main className="page-shell bg-[var(--page-bg)] text-[var(--ink)]">
@@ -147,7 +314,7 @@ export default function Home() {
               <a href="#areas" className="hover:text-[var(--ink)]">Áreas</a>
               <a href="#pesquisas" className="hover:text-[var(--ink)]">Pesquisas</a>
               <a href="#metodo-sert" className="hover:text-[var(--ink)]">Método SERT</a>
-              <a href="#palestras" className="hover:text-[var(--ink)]">Palestras</a>
+              <a href="#palestras" className="hover:text-[var(--ink)]">Fundadora</a>
             </nav>
           </div>
 
@@ -166,39 +333,39 @@ export default function Home() {
         className="relative overflow-hidden bg-[radial-gradient(circle_at_left_top,rgba(191,233,237,0.34),transparent_20%),radial-gradient(circle_at_center,rgba(255,255,255,0.9),transparent_44%),radial-gradient(circle_at_left_bottom,rgba(220,225,230,0.88),transparent_34%),linear-gradient(135deg,#f2f6f8_0%,#f9fbfc_46%,#edf1f4_100%)]"
       >
         <div className="mx-auto max-w-[1360px] px-5 pb-18 pt-28 md:px-10 md:pb-18 md:pt-32">
-          <div className="mx-auto max-w-[1030px] text-center">
-            <div className="inline-flex items-center gap-2.5 rounded-full border border-[rgba(11,15,33,0.08)] bg-white px-3.5 py-1.5 text-[11px] font-medium uppercase tracking-[0.11em] text-[var(--muted)] shadow-[0_10px_25px_rgba(13,17,35,0.03)]">
+          <div className="mx-auto max-w-[1120px] text-center">
+            {/* <div className="inline-flex items-center gap-2.5 rounded-full border border-[rgba(11,15,33,0.08)] bg-white px-3.5 py-1.5 text-[11px] font-medium uppercase tracking-[0.11em] text-[var(--muted)] shadow-[0_10px_25px_rgba(13,17,35,0.03)]">
               <span className="h-2.5 w-2.5 rounded-full bg-[var(--soft-accent)]" />
               Inteligência Organizacional
-            </div>
+            </div> */}
 
-            <h1 className="mx-auto mt-10 max-w-[980px] text-[3.55rem] font-semibold leading-[0.9] tracking-[-0.095em] text-[var(--ink)] md:text-[6.15rem]">
-              <span className="block">O futuro das</span>
-              <span className="block">organizações começa</span>
+            <h1 className="mx-auto mt-10 max-w-[1120px] text-[1.9rem] font-semibold leading-[1.02] tracking-[0] text-[var(--ink)] md:text-[3.4rem]">
+              <span className="block">Saúde Mental Organizacional, Liderança</span>
+              <span className="block">e Desenvolvimento para Empresas</span>
               <span className="block">
-                pelas{" "}
-                <span className="hero-people-text">pessoas.</span>
+                que querem crescer com{" "} <br />
+                <span className="hero-people-text">Pessoas Saudáveis</span>
               </span>
             </h1>
 
             <p className="mx-auto mt-8 max-w-[760px] text-[1.15rem] leading-[1.75] text-[var(--muted)] md:text-[1.15rem]">
-              Um hub editorial de pesquisa, dados e conhecimento sobre comportamento humano,
-              cultura e o desenvolvimento sustentável do trabalho.
+              Transformamos relações, fortalecemos lideranças e desenvolvemos ambientes
+              organizacionais mais saudáveis através do Método SERT.
             </p>
 
             <div className="hero-orbit mx-auto mt-10 max-w-[850px] px-6 pb-18 pt-10 md:px-10">
               <div className="relative z-10 mx-auto flex max-w-[470px] flex-col gap-4 sm:flex-row sm:justify-center">
                 <a
-                  href="#biblioteca"
+                  href="https://wa.me/5511976222228?text=Ol%C3%A1%21%20Quero%20solicitar%20um%20diagn%C3%B3stico%20para%20minha%20empresa."
                   className="inline-flex h-[3.35rem] items-center justify-center rounded-full bg-[#090c1d] px-8 text-[0.98rem] font-medium text-white shadow-[0_16px_32px_rgba(9,12,29,0.2)]"
                 >
-                  Explorar Biblioteca
+                  Solicitar Diagnóstico
                 </a>
                 <a
-                  href="#manifesto"
+                  href="/contrate-nossos-servicos"
                   className="inline-flex h-[3.35rem] items-center justify-center rounded-full border border-[rgba(11,15,33,0.1)] bg-white/88 px-8 text-[0.98rem] font-medium text-[var(--ink)] shadow-[0_10px_22px_rgba(255,255,255,0.55)]"
                 >
-                  Conheça o Manifesto
+                  Agendar Conversa
                 </a>
               </div>
             </div>
@@ -209,44 +376,42 @@ export default function Home() {
 
       <section id="manifesto" className="bg-white">
         <div className="mx-auto max-w-[1360px] px-5 pb-24 pt-10 md:px-10 md:pb-30 md:pt-12">
-          <div className="grid items-center gap-12 lg:grid-cols-[620px_minmax(0,1fr)]">
-            <div className="relative">
-              <div
-                className="manifest-photo h-[744px] rounded-[2rem] bg-cover"
-                style={{
-                  backgroundImage:
-                    "url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1400&q=80')",
-                  backgroundPosition: "center center",
-                }}
-              />
-              <div className="manifest-quote absolute -bottom-6 right-[-22px] max-w-[192px] rounded-[1.2rem] px-5 py-5 text-[13px] leading-[1.52] text-[var(--ink)]">
-                &quot;Não existe evolução dos negócios sem a evolução de quem os constrói.&quot;
+          <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,620px)_minmax(0,1fr)]">
+            <div className="rounded-[2rem] bg-[linear-gradient(145deg,#08111d_0%,#0c2030_58%,#123548_100%)] px-7 py-8 text-white shadow-[0_28px_70px_rgba(8,17,29,0.14)] md:px-9 md:py-10">
+              <div className="section-kicker text-[#7fe3eb]">
+                <span className="section-kicker-line bg-[#7fe3eb]" />
+                Bloco de dores
+              </div>
+              <h2 className="mt-8 text-[2.2rem] font-semibold leading-[1.02] tracking-[-0.06em] md:text-[3.1rem]">
+                Sua empresa enfrenta:
+              </h2>
+              <div className="mt-10 grid gap-4 sm:grid-cols-2">
+                {painPoints.map((pain) => (
+                  <div
+                    key={pain}
+                    className="flex items-center gap-3 rounded-[1rem] border border-white/10 bg-white/[0.06] px-4 py-4"
+                  >
+                    <CheckCircle2 className="h-5 w-5 shrink-0 text-[#7fe3eb]" />
+                    <span className="text-[0.98rem] leading-6 text-white/88">{pain}</span>
+                  </div>
+                ))}
               </div>
             </div>
 
             <div className="max-w-[760px] lg:pl-8">
               <div className="section-kicker">
                 <span className="section-kicker-line" />
-                Manifesto
+                Diagnóstico organizacional
               </div>
               <h2 className="mt-8 max-w-[620px] text-[2.45rem] font-semibold leading-[0.98] tracking-[-0.08em] md:text-[3.35rem]">
-                Evoluir é compreender antes de agir.
+                Problemas organizacionais raramente começam apenas nos processos.
               </h2>
-              <div className="mt-10 max-w-[760px] space-y-5 text-[1rem] leading-[1.85] font-medium text-[rgba(106,116,138,0.98)]">
-                <p>
-                  Vivemos em uma era de mudanças aceleradas. Tecnologias emergem, mercados se
-                  transformam e processos são automatizados. No entanto, o núcleo de qualquer
-                  organização inovadora permanece inalterado: as pessoas.
-                </p>
-                <p>
-                  O <strong>Evoluir-T</strong> nasceu da necessidade de criar um espaço de reflexão profunda. Não
-                  somos apenas um repositório de artigos; somos um ecossistema de inteligência
-                  dedicado a decifrar a complexidade do comportamento humano no trabalho.
-                </p>
-                <p>
-                  Acreditamos que líderes extraordinários e culturas resilientes não são
-                  construídos com fórmulas prontas, mas com dados, empatia, pesquisa e um
-                  compromisso inegociável com o desenvolvimento sustentável.
+              <div className="mt-10 max-w-[760px] space-y-6 text-[1.06rem] leading-[1.9] font-medium text-[rgba(106,116,138,0.98)]">
+                <p>Muitas vezes começam nas relações.</p>
+                <p className="max-w-[690px] text-[1rem] leading-[1.82] text-[var(--muted)]">
+                  Quando a comunicação falha, os conflitos aumentam, a liderança se desgasta e o
+                  desempenho coletivo perde consistência. Olhar para as relações e para a saúde
+                  emocional da organização é o primeiro passo para transformar o ambiente.
                 </p>
               </div>
             </div>
@@ -263,37 +428,42 @@ export default function Home() {
             <div>
               <div className="section-kicker text-[var(--accent)]">
                 <span className="section-kicker-line bg-[var(--accent)]" />
-                Territórios
+                Quem somos
               </div>
 
               <div className="mt-11">
-                <h2 className="max-w-[480px] text-[3.05rem] font-semibold leading-[0.9] tracking-[-0.09em] text-white md:text-[4.15rem]">
-                  Domínios de
-                  <span className="block text-white/62">Investigação</span>
+                <h2 className="max-w-[620px] text-[3.05rem] font-semibold leading-[0.9] tracking-[-0.09em] text-white md:text-[4.15rem]">
+                  EVOLUIR-T
+                  <span className="block text-white/62">Consultoria Organizacional</span>
                 </h2>
               </div>
 
-              <div className="mt-[110px] space-y-0">
-                {domains.map((domain) => {
-                  const isActive = activeDomain.id === domain.id;
+              <p className="mt-10 max-w-[620px] text-[1.15rem] leading-[1.8] text-white/74">
+                A EVOLUIR-T atua no desenvolvimento da saúde mental organizacional, liderança e
+                relações humanas no trabalho.
+              </p>
+
+              <div className="mt-[72px] space-y-0">
+                {whoWeAreTopics.map((topic) => {
+                  const isActive = activeWhoWeAreTopic.id === topic.id;
 
                   return (
                     <button
-                      key={domain.id}
+                      key={topic.id}
                       type="button"
-                      onMouseEnter={() => setActiveDomain(domain)}
-                      onFocus={() => setActiveDomain(domain)}
-                      className="group flex w-full items-center gap-6 border-b border-white/8 py-[34px] text-left"
+                      onMouseEnter={() => setActiveWhoWeAreTopic(topic)}
+                      onFocus={() => setActiveWhoWeAreTopic(topic)}
+                      className="group flex w-full items-center gap-6 border-b border-white/8 py-[30px] text-left"
                     >
                       <span
                         className={`territory-index w-[52px] ${isActive ? "text-[var(--accent)]" : "text-white/24"}`}
                       >
-                        {domain.id}
+                        {topic.id}
                       </span>
                       <span
-                        className={`flex-1 text-[2.05rem] font-medium tracking-[-0.06em] ${isActive ? "text-white" : "text-white/62 group-hover:text-white/82"}`}
+                        className={`flex-1 text-[1.7rem] font-medium tracking-[-0.05em] ${isActive ? "text-white" : "text-white/62 group-hover:text-white/82"}`}
                       >
-                        {domain.title}
+                        {topic.title}
                       </span>
                       <span
                         className={`flex h-[52px] w-[52px] items-center justify-center rounded-full border bg-transparent text-sm shadow-[inset_0_0_0_1px_rgba(255,255,255,0.03)] transition-all ${
@@ -314,35 +484,118 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="pt-[84px] lg:pl-2">
+            <div className="pt-[188px] lg:pl-2">
               <p className="ml-auto max-w-[430px] text-right text-[1.03rem] leading-[1.68] text-white/50">
-                Nossos eixos temáticos são projetados para desconstruir e reconstruir a forma
-                como pensamos o trabalho.
+                Nossa atuação integra cuidado emocional, desenvolvimento de lideranças e leitura
+                sistêmica das relações para fortalecer ambientes organizacionais.
               </p>
 
-              <div className="mt-[112px]">
+              <div className="mt-[148px]">
                 <div className="domain-card flex min-h-[500px] flex-col rounded-[2rem] border border-white/7 px-10 py-10">
                   <div
-                    key={activeDomain.id}
+                    key={activeWhoWeAreTopic.id}
                     className="domain-card-panel animate-fade-up animate-duration-500 animate-ease-out animate-once animate-fill-both flex min-h-[420px] flex-1 flex-col"
                   >
                     <p className="territory-index animate-fade animate-duration-300 animate-ease-out animate-once animate-fill-both text-[var(--accent)]">
-                      {activeDomain.id}
+                      {activeWhoWeAreTopic.id}
                     </p>
-                    <p className="mt-11 max-w-[410px] animate-fade-up animate-duration-500 animate-delay-75 animate-ease-out animate-once animate-fill-both text-[1.16rem] leading-[1.74] text-white/94">
-                      {activeDomain.description}
+                    <h3 className="mt-10 max-w-[430px] text-[2rem] font-medium leading-[1.02] tracking-[-0.06em] text-white">
+                      {activeWhoWeAreTopic.title}
+                    </h3>
+                    <p className="mt-8 max-w-[430px] animate-fade-up animate-duration-500 animate-delay-75 animate-ease-out animate-once animate-fill-both text-[1.16rem] leading-[1.74] text-white/94">
+                      {activeWhoWeAreTopic.description}
                     </p>
                     <a
-                      href="#biblioteca"
+                      href="/contrate-nossos-servicos"
                       className="mt-auto inline-flex animate-fade-up animate-duration-500 animate-delay-150 animate-ease-out animate-once animate-fill-both items-center gap-3 pt-10 text-[15px] font-medium uppercase tracking-[0.12em] text-white"
                     >
-                      Explorar domínio
+                      Conheça nossa atuação
                       <ArrowUpRight className="h-4 w-4" />
                     </a>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="palestras" className="bg-white">
+        <div className="mx-auto grid max-w-[1360px] items-center gap-14 px-5 py-16 md:px-10 lg:grid-cols-[642px_minmax(0,1fr)] lg:gap-[58px]">
+          <div className="relative min-h-[800px] overflow-hidden rounded-[2rem] bg-[#8f8c95] shadow-[0_24px_70px_rgba(10,15,28,0.08)]">
+            <div
+              className="absolute inset-0 bg-cover bg-center"
+              style={{
+                backgroundImage: "url('/foto-palestras.png')",
+                backgroundPosition: "center center",
+              }}
+            />
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,10,22,0)_58%,rgba(7,8,22,0.78)_100%)]" />
+
+            <div className="absolute inset-x-[30px] bottom-[30px] rounded-[0.8rem] bg-[#0b0c1b] px-6 py-6 text-white shadow-[0_24px_50px_rgba(4,6,18,0.22)]">
+              <div className="flex items-start gap-4">
+                <div className="flex h-[44px] w-[44px] shrink-0 items-center justify-center rounded-full border border-[rgba(11,169,177,0.58)] bg-[rgba(10,151,166,0.22)] text-[var(--accent)]">
+                  <Mic className="h-5 w-5" />
+                </div>
+                <div>
+                  <h3 className="text-[1rem] font-semibold tracking-[-0.02em]">
+                    Elaine Ferreira:
+                  </h3>
+                  <p className="mt-2 max-w-[470px] text-[0.86rem] leading-[1.55] text-white/74">
+                    Atua conectando escuta clínica, leitura sistêmica e desenvolvimento humano
+                    para fortalecer relações, lideranças e ambientes de trabalho mais saudáveis.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="max-w-[690px] lg:pl-0">
+            <div className="section-kicker">
+              <span className="section-kicker-line" />
+              Sobre a fundadora
+            </div>
+
+            <h2 className="mt-9 max-w-[700px] text-[2.95rem] font-semibold leading-[1.02] tracking-[-0.075em] text-[var(--ink)] md:text-[4rem]">
+              Elaine Ferreira
+            </h2>
+
+            <p className="mt-7 max-w-[690px] text-[1.08rem] leading-[1.68] text-[var(--muted)]">
+              Psicóloga | Terapeuta de Família e Casal | Consultora Organizacional
+            </p>
+
+            <p className="mt-5 max-w-[690px] text-[1.08rem] leading-[1.68] text-[var(--muted)]">
+              Psicóloga apaixonada pelo desenvolvimento humano e pelas relações, Elaine Ferreira
+              desenvolve seu trabalho a partir de uma escuta sensível e de uma compreensão
+              profunda das dinâmicas emocionais que atravessam pessoas, equipes e organizações.
+            </p>
+
+            <p className="mt-5 max-w-[690px] text-[1.08rem] leading-[1.68] text-[var(--muted)]">
+              Sua atuação integra olhar clínico, leitura organizacional e visão sistêmica para
+              apoiar processos de transformação em contextos onde saúde mental, liderança e
+              qualidade das relações são partes centrais da sustentabilidade do trabalho.
+            </p>
+
+            <p className="mt-5 max-w-[690px] text-[1.08rem] leading-[1.68] text-[var(--muted)]">
+              Ao longo de sua trajetória, vem contribuindo com empresas e profissionais que
+              desejam construir ambientes mais conscientes, humanos e capazes de sustentar
+              desenvolvimento com responsabilidade emocional.
+            </p>
+
+            <div className="mt-12">
+              <p className="text-[0.95rem] font-semibold text-[var(--ink)]">
+                Atua com foco em:
+              </p>
+              <div className="mt-5 space-y-4">
+                {founderFocusAreas.map((topic) => (
+                  <div key={topic} className="flex items-center gap-3 text-[1rem] text-[var(--muted)]">
+                    <CheckCircle2 className="h-4.5 w-4.5 shrink-0 text-[var(--accent)]" />
+                    <span>{topic}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
@@ -469,50 +722,21 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="biblioteca" className="mx-auto max-w-[1360px] px-5 py-24 md:px-10">
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-start">
-          <div>
-            <h2 className="text-[3.05rem] font-semibold leading-none tracking-[-0.07em] md:text-[4.2rem]">
-              Leituras Essenciais
-            </h2>
-            <p className="mt-4 text-[1.14rem] text-[var(--muted)]">
-              Curadoria semanal de conteúdos transformadores.
-            </p>
-          </div>
-          <a
-            href="#newsletter"
-            className="mt-3 inline-flex items-center gap-3 text-[1rem] font-medium uppercase tracking-[0.08em] text-[var(--accent)]"
-          >
-            Ver todas as publicações
-            <ArrowRight className="h-4 w-4" />
-          </a>
-        </div>
-
-        <div className="mt-14 grid gap-6 lg:grid-cols-[minmax(0,1fr)_430px]">
-          <ReadingCard card={readingCards[0]} />
-          <div className="grid gap-6">
-            <ReadingCard card={readingCards[1]} />
-            <ReadingCard card={readingCards[2]} />
-          </div>
-        </div>
-      </section>
-
       <section id="metodo-sert" className="relative overflow-hidden bg-[#050716] text-white">
         <div className="mx-auto max-w-[1360px] px-5 py-20 md:px-10 md:py-24">
           <div className="mx-auto max-w-[820px] text-center">
             <div className="inline-flex items-center gap-3 text-[0.82rem] font-medium uppercase tracking-[0.16em] text-[#14d6ea]">
               <span className="h-px w-8 bg-[#14d6ea]" />
-              Nossa Plataforma
+              Método SERT
               <span className="h-px w-8 bg-[#14d6ea]" />
             </div>
 
             <h2 className="mt-7 text-[2.65rem] font-semibold leading-tight text-white md:text-[4rem]">
-              Conheça o <span className="text-[#19d8de]">Método SERT</span>
+              O que é o <span className="text-[#19d8de]">Método SERT</span>
             </h2>
             <p className="mx-auto mt-5 max-w-[760px] text-[1.08rem] leading-[1.62] text-white/70">
-              Mais do que uma metodologia, uma plataforma inteligente que ajuda sua empresa a
-              acompanhar adesão, mapear sinais de risco e definir prioridades de cuidado em uma
-              experiência unificada.
+              Uma metodologia própria voltada para diagnóstico e transformação das relações no
+              ambiente organizacional.
             </p>
           </div>
 
@@ -538,7 +762,7 @@ export default function Home() {
                 href="/contrate-nossos-servicos"
                 className="mt-14 inline-flex h-[58px] items-center justify-center gap-3 rounded-full bg-[#0aaeb0] px-8 text-[0.98rem] font-semibold text-[#031018] shadow-[0_18px_34px_rgba(10,174,176,0.22)] hover:bg-[#12c2c5]"
               >
-                Conheça mais o SERT
+                Solicitar diagnóstico
                 <ArrowRight className="h-4 w-4" />
               </a>
             </div>
@@ -548,10 +772,10 @@ export default function Home() {
                 <div>
                   <div className="flex items-center gap-3">
                     <BarChart3 className="h-5 w-5 text-[#12c8e8]" strokeWidth={2} />
-                    <h3 className="text-[1.45rem] font-semibold text-white">Ecossistema SERT</h3>
+                    <h3 className="text-[1.45rem] font-semibold text-white">Diferenciais</h3>
                   </div>
                   <p className="mt-1 text-[0.82rem] text-white/48">
-                    Visão integrada de saúde corporativa
+                    Diagnóstico e transformação das relações organizacionais
                   </p>
                 </div>
                 <div className="mt-2 flex items-center gap-2.5">
@@ -561,7 +785,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="mt-12 grid gap-4 md:grid-cols-3">
+              <div className="mt-12 grid gap-4 md:grid-cols-2">
                 {sertAudienceCards.map((card) => (
                   <div
                     key={card.title}
@@ -575,105 +799,151 @@ export default function Home() {
                   </div>
                 ))}
               </div>
-
-              <div className="mt-8 h-px bg-white/10" />
-
-              <div className="mt-8 space-y-5">
-                <div className="grid grid-cols-[minmax(0,1fr)_82px] items-center gap-4">
-                  <div className="h-2 overflow-hidden rounded-full bg-white/[0.065]">
-                    <div className="h-full w-[85%] rounded-full bg-[#0aaeb0]" />
-                  </div>
-                  <p className="font-mono text-[0.78rem] text-[#18dce7]">85% Saúde</p>
-                </div>
-                <div className="grid grid-cols-[minmax(0,1fr)_82px] items-center gap-4">
-                  <div className="h-2 overflow-hidden rounded-full bg-white/[0.065]">
-                    <div className="h-full w-[12%] rounded-full bg-[#ff0a68]" />
-                  </div>
-                  <p className="font-mono text-[0.78rem] text-[#ff2b78]">12% Alerta</p>
-                </div>
-              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="palestras" className="bg-white">
-        <div className="mx-auto grid max-w-[1360px] items-center gap-14 px-5 py-16 md:px-10 lg:grid-cols-[642px_minmax(0,1fr)] lg:gap-[58px]">
-          <div className="relative min-h-[800px] overflow-hidden rounded-[2rem] bg-[#8f8c95] shadow-[0_24px_70px_rgba(10,15,28,0.08)]">
-            <div
-              className="absolute inset-0 bg-cover bg-center"
-              style={{
-                backgroundImage: "url('/foto-palestras.png')",
-                backgroundPosition: "center center",
-              }}
-            />
-            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,10,22,0)_58%,rgba(7,8,22,0.78)_100%)]" />
+      <section id="biblioteca" className="mx-auto max-w-[1360px] px-5 py-24 md:px-10">
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-start">
+          <div>
+            <h2 className="text-[3.05rem] font-semibold leading-none tracking-[-0.07em] md:text-[4.2rem]">
+              Serviços
+            </h2>
+            <p className="mt-4 max-w-[780px] text-[1.14rem] text-[var(--muted)]">
+              Mantemos a dinâmica da vitrine e passamos a destacar as principais frentes de
+              atuação da Evoluir-T para empresas, lideranças e contextos periciais.
+            </p>
+          </div>
+          <a
+            href="/contrate-nossos-servicos"
+            className="mt-3 inline-flex items-center gap-3 text-[1rem] font-medium uppercase tracking-[0.08em] text-[var(--accent)]"
+          >
+            Solicitar atendimento
+            <ArrowRight className="h-4 w-4" />
+          </a>
+        </div>
 
-            <div className="absolute inset-x-[30px] bottom-[30px] rounded-[0.8rem] bg-[#0b0c1b] px-6 py-6 text-white shadow-[0_24px_50px_rgba(4,6,18,0.22)]">
-              <div className="flex items-start gap-4">
-                <div className="flex h-[44px] w-[44px] shrink-0 items-center justify-center rounded-full border border-[rgba(11,169,177,0.58)] bg-[rgba(10,151,166,0.22)] text-[var(--accent)]">
-                  <Mic className="h-5 w-5" />
-                </div>
-                <div>
-                  <h3 className="text-[1rem] font-semibold tracking-[-0.02em]">
-                    Elaine Ferreira:
-                  </h3>
-                  <p className="mt-2 max-w-[470px] text-[0.86rem] leading-[1.55] text-white/74">
-                    Transforme seu evento corporativo com insights baseados em ciência
-                    comportamental e dados reais.
-                  </p>
-                </div>
+        <div className="mt-14 grid gap-6 md:grid-cols-2">
+          {serviceCards.map((card) => (
+            <ReadingCard key={card.title} card={card} />
+          ))}
+        </div>
+      </section>
+
+      <section id="palestras-corporativas" className="bg-[#f3f6f8]">
+        <div className="mx-auto max-w-[1360px] px-5 py-24 md:px-10">
+          <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
+            <div>
+              <div className="section-kicker">
+                <span className="section-kicker-line" />
+                Palestras Corporativas
               </div>
+              <h2 className="mt-7 max-w-[780px] text-[3.05rem] font-semibold leading-none tracking-[-0.07em] md:text-[4.2rem]">
+                Temas para conversas que fortalecem cultura, liderança e saúde emocional.
+              </h2>
+              <p className="mt-5 max-w-[760px] text-[1.14rem] leading-[1.72] text-[var(--muted)]">
+                Uma seleção de palestras pensadas para abrir diálogo, ampliar repertório e apoiar
+                equipes em desafios concretos do trabalho contemporâneo.
+              </p>
             </div>
+            <a
+              href="/contrate-nossos-servicos"
+              className="inline-flex h-[56px] items-center justify-center gap-3 rounded-full bg-[#090c1d] px-7 text-[0.98rem] font-medium text-white shadow-[0_14px_28px_rgba(9,12,29,0.16)]"
+            >
+              Solicitar palestra
+              <ArrowRight className="h-4 w-4" />
+            </a>
           </div>
 
-          <div className="max-w-[690px] lg:pl-0">
+          <div className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            {corporateTalkThemes.map((theme, index) => (
+              <article
+                key={theme.title}
+                className="group relative overflow-hidden rounded-[1.6rem] border border-[rgba(11,15,33,0.08)] bg-[linear-gradient(180deg,#ffffff_0%,#fbfcfd_100%)] px-6 py-7 shadow-[0_18px_44px_rgba(9,13,33,0.05)] transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(10,151,166,0.22)] hover:shadow-[0_24px_56px_rgba(9,13,33,0.09)]"
+              >
+                <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-[radial-gradient(circle_at_top,rgba(10,151,166,0.08),transparent_65%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                <div
+                  className={`relative flex h-12 w-12 items-center justify-center rounded-[1rem] ${theme.iconBgClass} ${theme.accentClass} transition-transform duration-300 group-hover:scale-110`}
+                >
+                  <theme.Icon className="h-5 w-5" strokeWidth={1.9} />
+                </div>
+                <p
+                  className={`mt-6 text-[0.78rem] font-medium uppercase tracking-[0.14em] ${theme.pillClass}`}
+                >
+                  Tema {String(index + 1).padStart(2, "0")}
+                </p>
+                <h3 className="mt-3 max-w-[320px] text-[1.55rem] font-semibold leading-[1.08] tracking-[-0.05em] text-[var(--ink)]">
+                  {theme.title}
+                </h3>
+                <p className="mt-4 max-w-[340px] text-[0.98rem] leading-[1.7] text-[var(--muted)]">
+                  {theme.description}
+                </p>
+                <div className="mt-6 flex items-center gap-3">
+                  <span className={`h-[3px] w-12 rounded-full ${theme.iconBgClass}`} />
+                  <span className="text-[0.82rem] text-[rgba(102,113,135,0.82)]">
+                    palestra corporativa
+                  </span>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="como-funciona" className="bg-white">
+        <div className="mx-auto max-w-[1360px] px-5 py-24 md:px-10">
+          <div className="mx-auto max-w-[860px] text-center">
             <div className="section-kicker">
               <span className="section-kicker-line" />
-              Para o seu evento
+              Como Funciona
             </div>
-
-            <h2 className="mt-9 max-w-[700px] text-[2.95rem] font-semibold leading-[1.02] tracking-[-0.075em] text-[var(--ink)] md:text-[4rem]">
-              Eleve o nível do debate sobre{" "}
-              <span className="talks-highlight">pessoas e cultura.</span>
+            <h2 className="mt-7 text-[3.05rem] font-semibold leading-none tracking-[-0.07em] md:text-[4.2rem]">
+              Um fluxo claro para transformar leitura organizacional em ação.
             </h2>
-
-            <p className="mt-7 max-w-[690px] text-[1.08rem] leading-[1.68] text-[var(--muted)]">
-              Nossas palestras e masterclasses não são motivacionais — são jornadas
-              intelectuais. Levamos ao palco a mesma profundidade de nossas pesquisas,
-              conectando psicologia, estratégia e o futuro do trabalho de forma provocativa e
-              memorável.
+            <p className="mx-auto mt-5 max-w-[760px] text-[1.14rem] leading-[1.72] text-[var(--muted)]">
+              Da compreensão do cenário até a transformação, cada etapa orienta decisões mais
+              conscientes e intervenções alinhadas à realidade da empresa.
             </p>
+          </div>
 
-            <div className="mt-12">
-              <p className="text-[0.95rem] font-semibold text-[var(--ink)]">
-                Temas de Assinatura:
-              </p>
-              <div className="mt-5 space-y-4">
-                {signatureTopics.map((topic) => (
-                  <div key={topic} className="flex items-center gap-3 text-[1rem] text-[var(--muted)]">
-                    <CheckCircle2 className="h-4.5 w-4.5 shrink-0 text-[var(--accent)]" />
-                    <span>{topic}</span>
+          <div className="mt-16 grid gap-5 xl:grid-cols-[minmax(0,1fr)_40px_minmax(0,1fr)_40px_minmax(0,1fr)_40px_minmax(0,1fr)] xl:items-stretch">
+            {workflowSteps.map((item, index) => (
+              <div key={item.step} className="contents">
+                <article className="group relative flex h-full flex-col overflow-hidden rounded-[1.7rem] border border-[rgba(11,15,33,0.08)] bg-[linear-gradient(180deg,#ffffff_0%,#f9fbfc_100%)] p-7 shadow-[0_18px_44px_rgba(9,13,33,0.045)] transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(10,151,166,0.18)] hover:shadow-[0_26px_60px_rgba(9,13,33,0.08)]">
+                  <div className={`pointer-events-none absolute inset-0 opacity-80 ${item.glowClass}`} />
+                  <div className="relative flex items-start justify-between gap-4">
+                    <div
+                      className={`flex h-12 w-12 items-center justify-center rounded-[1rem] ${item.iconBgClass} ${item.accentClass} transition-transform duration-300 group-hover:scale-110`}
+                    >
+                      <item.Icon className="h-5 w-5" strokeWidth={1.9} />
+                    </div>
+                    <div className="rounded-full border border-[rgba(11,15,33,0.08)] bg-white/80 px-3 py-1 text-[0.8rem] font-medium text-[rgba(102,113,135,0.92)] backdrop-blur-sm">
+                      Etapa {index + 1}
+                    </div>
                   </div>
-                ))}
-              </div>
-            </div>
+                  <p className={`relative mt-6 text-[0.78rem] font-medium uppercase tracking-[0.14em] ${item.accentClass}`}>
+                    {item.step}
+                  </p>
+                  <h3 className="relative mt-3 text-[1.7rem] font-semibold leading-[1.05] tracking-[-0.05em] text-[var(--ink)]">
+                    {item.title}
+                  </h3>
+                  <p className="relative mt-4 max-w-[320px] flex-1 text-[1rem] leading-[1.72] text-[var(--muted)]">
+                    {item.description}
+                  </p>
+                  <div className="relative mt-7 flex items-center">
+                    <span className={`block h-[3px] w-14 rounded-full ${item.iconBgClass}`} />
+                  </div>
+                </article>
 
-            <div className="mt-14 flex flex-col gap-3 sm:flex-row">
-              <a
-                href="/contrate-nossos-servicos"
-                className="inline-flex h-[54px] items-center justify-center gap-3 rounded-full bg-[#070a1b] px-8 text-[0.98rem] font-medium text-white shadow-[0_14px_28px_rgba(7,10,27,0.18)]"
-              >
-                Solicitar Orçamento
-                <ArrowRight className="h-4 w-4" />
-              </a>
-              <a
-                href="#newsletter"
-                className="inline-flex h-[54px] items-center justify-center rounded-full border border-[rgba(11,15,33,0.1)] bg-white px-8 text-[0.98rem] font-medium text-[var(--ink)]"
-              >
-                Ver Mídia Kit
-              </a>
-            </div>
+                {index < workflowSteps.length - 1 ? (
+                  <div className="flex items-center justify-center py-1 xl:py-0">
+                    <ArrowDown className="h-5 w-5 text-[var(--accent)] xl:hidden" strokeWidth={1.9} />
+                    <ArrowRight className="hidden h-5 w-5 text-[var(--accent)] xl:block" strokeWidth={1.9} />
+                  </div>
+                ) : null}
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -689,27 +959,26 @@ export default function Home() {
             </div>
 
             <h2 className="mx-auto mt-9 max-w-[760px] text-[2.8rem] font-semibold leading-[0.98] tracking-[-0.055em] text-white md:text-[3.15rem]">
-              Conhecimento destilado,
-              <span className="block text-[#9ba2af]">direto na sua caixa de entrada.</span>
+              Sua empresa está pronta para evoluir?
             </h2>
 
-            <p className="mx-auto mt-7 max-w-[620px] text-[1.04rem] leading-[1.62] text-white/68">
-              Junte-se a milhares de líderes e pesquisadores que recebem nossos insights semanais
-              sobre o futuro do comportamento organizacional.
+            <p className="mx-auto mt-7 max-w-[720px] text-[1.04rem] leading-[1.7] text-white/68">
+              Fortaleça lideranças, cuide das relações de trabalho e transforme desafios
+              organizacionais em caminhos mais saudáveis, conscientes e produtivos.
             </p>
 
             <form className="mx-auto mt-10 flex max-w-[514px] flex-col gap-3.5 sm:flex-row">
               <input
                 type="email"
                 placeholder="seu.email@exemplo.com"
-                className="h-[58px] flex-1 rounded-full border border-white/10 bg-[rgba(255,255,255,0.055)] px-6 text-[1rem] text-white outline-none placeholder:text-white/28 focus:border-[rgba(16,191,226,0.55)]"
+                className="h-[58px] flex-[1.45] rounded-full border border-white/10 bg-[rgba(255,255,255,0.055)] px-6 text-[1rem] text-white outline-none placeholder:text-white/28 focus:border-[rgba(16,191,226,0.55)]"
               />
-              <button
-                type="submit"
-                className="h-[58px] rounded-full bg-[#0ea8ab] px-10 text-[1rem] font-medium text-[#030f18] shadow-[0_14px_34px_rgba(14,168,171,0.23)]"
+              <a
+                href="https://wa.me/5511976222228?text=Ol%C3%A1%21%20Quero%20agendar%20um%20diagn%C3%B3stico%20organizacional."
+                className="inline-flex h-[58px] items-center justify-center rounded-full bg-[#0ea8ab] px-7 text-[0.96rem] font-medium text-[#030f18] shadow-[0_14px_34px_rgba(14,168,171,0.23)]"
               >
-                Inscrever-se
-              </button>
+                Agendar Diagnóstico
+              </a>
             </form>
           </div>
         </div>
@@ -719,8 +988,8 @@ export default function Home() {
             <div className="h-px bg-white/[0.08]" />
           </div>
 
-          <div className="mx-auto max-w-[1488px] px-5 pb-8 pt-[84px] md:px-10">
-            <div className="grid gap-14 lg:grid-cols-[320px_240px_260px_260px] lg:justify-between">
+          <div className="mx-auto max-w-[1488px] px-5 pb-8 pt-[56px] md:px-10">
+            <div className="grid gap-10 lg:grid-cols-[320px_240px] lg:justify-between">
               <div>
                 <a href="#top" className="text-[1.55rem] font-semibold leading-none tracking-[-0.04em]">
                   Evoluir-<span className="text-[var(--accent)]">T</span>
@@ -730,24 +999,15 @@ export default function Home() {
                   e os futuros do trabalho.
                 </p>
               </div>
-
-              <FooterColumn
-                title="Explorar"
-                items={["Manifesto", "Áreas de Conhecimento", "Pesquisas e Dados", "Biblioteca de Artigos"]}
-              />
-              <FooterColumn
-                title="Comunidade"
-                items={["Eventos", "Fóruns de Discussão", "Seja um Contribuidor", "Parcerias Acadêmicas"]}
-              />
               <FooterColumn
                 title="Social"
-                items={["LinkedIn", "Twitter (X)", "Instagram"]}
+                items={["E-mail", "LinkedIn", "Twitter (X)", "Instagram"]}
               />
             </div>
 
-            <div className="mt-[64px] h-px bg-white/[0.08]" />
+            <div className="mt-[40px] h-px bg-white/[0.08]" />
 
-            <div className="flex flex-col gap-6 pt-8 text-[13px] text-white/32 md:flex-row md:items-center md:justify-between">
+            <div className="flex flex-col gap-4 pt-6 text-[13px] text-white/32 md:flex-row md:items-center md:justify-between">
               <p>© 2026 Evoluir-T. Todos os direitos reservados.</p>
               <div className="flex items-center gap-8">
                 <a href="/politica-de-privacidade">Política de Privacidade</a>
@@ -764,31 +1024,78 @@ export default function Home() {
 function ReadingCard({
   card,
 }: {
-  card: { title: string; type: string; time: string; image: string; large?: boolean };
+  card: {
+    title: string;
+    eyebrow: string;
+    image: string;
+    large?: boolean;
+    context?: string;
+    prefix?: string;
+    items: string[];
+    secondaryPrefix?: string;
+    secondaryItems?: string[];
+  };
 }) {
   return (
     <article
-      className={`reading-card group relative overflow-hidden rounded-[1.75rem] ${
-        card.large ? "min-h-[560px]" : "min-h-[270px]"
+      className={`reading-card group relative overflow-hidden rounded-[1.75rem] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_26px_60px_rgba(9,13,33,0.14)] ${
+        card.large ? "min-h-[420px] md:min-h-[460px]" : "min-h-[320px]"
       }`}
     >
       <div
         className="reading-card-image absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-[1.06]"
         style={{ backgroundImage: `url('${card.image}')` }}
       />
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,10,21,0.1),rgba(7,10,21,0.76)_72%,rgba(7,10,21,0.9)_100%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,10,21,0.18),rgba(7,10,21,0.72)_48%,rgba(7,10,21,0.94)_100%)]" />
       <div className="relative flex h-full flex-col justify-end p-7 md:p-8">
         <div className="flex items-center gap-4 text-white/80">
-          <span className="rounded-full bg-white/18 px-4 py-1.5 text-[14px]">{card.type}</span>
-          <span className="text-[15px]">{card.time}</span>
+          <span className="rounded-full border border-white/10 bg-white/18 px-4 py-1.5 text-[14px] backdrop-blur-sm">
+            {card.eyebrow}
+          </span>
+          <span className="text-[15px]">{card.items.length} frentes</span>
         </div>
         <h3
           className={`mt-5 max-w-[92%] font-medium leading-[1.15] tracking-[-0.05em] text-white ${
-            card.large ? "text-[2.1rem] md:text-[3rem]" : "text-[1.45rem] md:text-[1.8rem]"
+            card.large ? "text-[2rem] md:text-[2.35rem]" : "text-[1.45rem] md:text-[1.8rem]"
           }`}
         >
           {card.title}
         </h3>
+        {card.context ? (
+          <p className="mt-4 max-w-[92%] text-[0.92rem] leading-6 text-white/74">{card.context}</p>
+        ) : null}
+        {card.prefix ? (
+          <p className="mt-4 text-[0.8rem] font-medium uppercase tracking-[0.12em] text-[#8de7ef]">
+            {card.prefix}
+          </p>
+        ) : null}
+        <div className="mt-5 flex flex-wrap gap-2.5">
+          {card.items.map((item) => (
+            <span
+              key={item}
+              className="rounded-full border border-white/12 bg-white/10 px-3 py-1.5 text-[0.8rem] text-white/88 backdrop-blur-sm transition-colors duration-300 group-hover:bg-white/14"
+            >
+              {item}
+            </span>
+          ))}
+        </div>
+        {card.secondaryPrefix ? (
+          <p className="mt-5 text-[0.8rem] font-medium uppercase tracking-[0.12em] text-[#8de7ef]">
+            {card.secondaryPrefix}
+          </p>
+        ) : null}
+        {card.secondaryItems?.length ? (
+          <div className="mt-3 flex flex-wrap gap-2.5">
+            {card.secondaryItems.map((item) => (
+              <span
+                key={item}
+                className="rounded-full border border-white/12 bg-white/[0.075] px-3 py-1.5 text-[0.8rem] text-white/76 backdrop-blur-sm transition-colors duration-300 group-hover:bg-white/[0.12]"
+              >
+                {item}
+              </span>
+            ))}
+          </div>
+        ) : null}
         <span className="mt-7 h-[3px] w-14 bg-[var(--accent)] transition-all duration-300 group-hover:w-20" />
       </div>
     </article>
@@ -796,10 +1103,18 @@ function ReadingCard({
 }
 
 function FooterColumn({ title, items }: { title: string; items: string[] }) {
+  const isSocial = title === "Social";
+
   return (
     <div>
       <p className="text-[0.94rem] font-medium uppercase tracking-[0.08em] text-white/82">{title}</p>
-      <div className="mt-8 space-y-5 text-[0.93rem] text-white/46">
+      <div
+        className={
+          isSocial
+            ? "mt-8 grid grid-cols-2 gap-x-6 gap-y-5 text-[0.93rem] text-white/46"
+            : "mt-8 space-y-5 text-[0.93rem] text-white/46"
+        }
+      >
         {items.map((item) => (
           <a key={item} href="#top" className="block hover:text-white/76">
             {item}

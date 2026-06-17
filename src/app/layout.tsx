@@ -34,7 +34,7 @@ export default function RootLayout({
       lang="pt-BR"
       className={`${plusJakartaSans.variable} ${cormorantGaramond.variable} ${spaceGrotesk.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="site-zoom-90 min-h-full flex flex-col">{children}</body>
     </html>
   );
 }
