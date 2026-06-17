@@ -759,10 +759,10 @@ export default function Home() {
               </div>
 
               <a
-                href="/contrate-nossos-servicos"
+                href="https://metodo-sert-rzvb.vercel.app/"
                 className="mt-14 inline-flex h-[58px] items-center justify-center gap-3 rounded-full bg-[#0aaeb0] px-8 text-[0.98rem] font-semibold text-[#031018] shadow-[0_18px_34px_rgba(10,174,176,0.22)] hover:bg-[#12c2c5]"
               >
-                Solicitar diagnóstico
+                Conheça o Método SERT
                 <ArrowRight className="h-4 w-4" />
               </a>
             </div>
