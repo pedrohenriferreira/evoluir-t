@@ -967,19 +967,14 @@ export default function Home() {
               organizacionais em caminhos mais saudáveis, conscientes e produtivos.
             </p>
 
-            <form className="mx-auto mt-10 flex max-w-[514px] flex-col gap-3.5 sm:flex-row">
-              <input
-                type="email"
-                placeholder="seu.email@exemplo.com"
-                className="h-[58px] flex-[1.45] rounded-full border border-white/10 bg-[rgba(255,255,255,0.055)] px-6 text-[1rem] text-white outline-none placeholder:text-white/28 focus:border-[rgba(16,191,226,0.55)]"
-              />
+            <div className="mt-10">
               <a
                 href="https://wa.me/5511976222228?text=Ol%C3%A1%21%20Quero%20agendar%20um%20diagn%C3%B3stico%20organizacional."
-                className="inline-flex h-[58px] items-center justify-center rounded-full bg-[#0ea8ab] px-7 text-[0.96rem] font-medium text-[#030f18] shadow-[0_14px_34px_rgba(14,168,171,0.23)]"
+                className="inline-flex h-[58px] items-center justify-center rounded-full bg-[#0ea8ab] px-9 text-[0.96rem] font-medium text-[#030f18] shadow-[0_14px_34px_rgba(14,168,171,0.23)]"
               >
                 Agendar Diagnóstico
               </a>
-            </form>
+            </div>
           </div>
         </div>
 
