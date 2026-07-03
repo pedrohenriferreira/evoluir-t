@@ -116,6 +116,35 @@ input {
   -webkit-text-fill-color: transparent;
 }
 
+.premium-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(143, 217, 223, 0.16), transparent 24%),
+    radial-gradient(circle at 76% 24%, rgba(143, 217, 223, 0.1), transparent 20%),
+    radial-gradient(circle at 82% 64%, rgba(255, 255, 255, 0.08), transparent 18%);
+  pointer-events: none;
+}
+
+.premium-hero-visual {
+  filter: drop-shadow(0 38px 64px rgba(0, 0, 0, 0.26));
+}
+
+.premium-hero-visual svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.premium-solution-card {
+  position: relative;
+  border: 1px solid rgba(11, 15, 33, 0.12);
+  border-radius: 1.5rem;
+  background: transparent;
+}
+
 .talks-highlight {
   color: #0a3f4b;
   background: linear-gradient(90deg, #091124 0%, #0a2835 44%, #0a5664 100%);

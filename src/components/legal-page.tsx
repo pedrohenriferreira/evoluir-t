@@ -1,5 +1,6 @@
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
+import { SiteLogo } from "@/components/site-logo";
 
 type LegalSection = {
   title: string;
@@ -18,14 +19,12 @@ type LegalPageProps = {
 export function LegalPage({ eyebrow, title, description, updatedAt, sections }: LegalPageProps) {
   return (
     <main className="min-h-screen bg-[var(--page-bg)] text-[var(--ink)]">
-      <header className="border-b border-[rgba(11,15,33,0.06)] bg-[rgba(250,251,253,0.98)]">
+      <header className="border-b border-white/8 bg-[#03091b]">
         <div className="flex items-center justify-between px-5 py-[0.95rem] md:px-6">
-          <Link href="/" className="text-[1.34rem] font-semibold leading-none tracking-[-0.07em]">
-            Evoluir-<span className="text-[var(--accent)]">T</span>
-          </Link>
+          <SiteLogo />
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-[14px] font-medium text-[var(--muted)] hover:text-[var(--ink)]"
+            className="inline-flex items-center gap-2 text-[14px] font-medium text-white/68 hover:text-white"
           >
             <ArrowLeft className="h-4 w-4" />
             Voltar ao site

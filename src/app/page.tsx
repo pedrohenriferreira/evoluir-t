@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { SiteLogo } from "@/components/site-logo";
 import {
   Activity,
   ArrowDown,
@@ -27,17 +28,6 @@ const founderFocusAreas = [
   "desenvolvimento humano",
   "relações profissionais",
   "perícia psicológica assistente técnica",
-];
-
-const painPoints = [
-  "líderes sobrecarregados",
-  "conflitos frequentes",
-  "equipes desmotivadas",
-  "estresse ocupacional",
-  "dificuldade de comunicação",
-  "afastamentos emocionais",
-  "baixa produtividade",
-  "riscos psicossociais",
 ];
 
 const whoWeAreTopics = [
@@ -298,29 +288,55 @@ const workflowSteps = [
   },
 ];
 
+const heroSolutionCards = [
+  {
+    title: "Diagnóstico Organizacional",
+    description: "Leitura estruturada dos riscos psicossociais, clima e relações de trabalho.",
+    Icon: Heart,
+  },
+  {
+    title: "Saúde Mental no Trabalho",
+    description: "Estratégias de prevenção, cuidado e fortalecimento da cultura organizacional.",
+    Icon: Brain,
+  },
+  {
+    title: "Desenvolvimento de Lideranças",
+    description: "Formação de líderes mais conscientes, relacionais e preparados para sustentar resultados.",
+    Icon: BarChart3,
+  },
+  {
+    title: "Método SERT",
+    description: "Abordagem própria para analisar sistema, emoções, relações e transformação.",
+    Icon: Shield,
+  },
+  {
+    title: "Palestras e Treinamentos",
+    description: "Conteúdos práticos para sensibilizar equipes e desenvolver competências humanas.",
+    Icon: Mic,
+  },
+];
+
 export default function Home() {
   const [activeWhoWeAreTopic, setActiveWhoWeAreTopic] = useState(whoWeAreTopics[0]);
 
   return (
     <main className="page-shell bg-[var(--page-bg)] text-[var(--ink)]">
-      <header className="sticky top-0 z-50 border-b border-[rgba(11,15,33,0.06)] bg-[rgba(250,251,253,0.98)] backdrop-blur-xl">
+      <header className="sticky top-0 z-50 border-b border-white/8 bg-[#03091b]">
         <div className="flex items-center justify-between px-5 py-[0.95rem] md:px-6">
           <div className="flex items-center gap-10">
-            <a href="#top" className="text-[1.34rem] font-semibold leading-none tracking-[-0.07em]">
-              Evoluir-<span className="text-[var(--accent)]">T</span>
-            </a>
-            <nav className="hidden items-center gap-7 text-[13px] font-medium text-[var(--muted)] md:flex">
-              <a href="#manifesto" className="hover:text-[var(--ink)]">Manifesto</a>
-              <a href="#areas" className="hover:text-[var(--ink)]">Áreas</a>
-              <a href="#pesquisas" className="hover:text-[var(--ink)]">Pesquisas</a>
-              <a href="#metodo-sert" className="hover:text-[var(--ink)]">Método SERT</a>
-              <a href="#palestras" className="hover:text-[var(--ink)]">Fundadora</a>
+            <SiteLogo href="#top" />
+            <nav className="hidden items-center gap-7 text-[13px] font-medium text-white/64 md:flex">
+              <a href="#manifesto" className="hover:text-white">Manifesto</a>
+              <a href="#areas" className="hover:text-white">Áreas</a>
+              <a href="#pesquisas" className="hover:text-white">Pesquisas</a>
+              <a href="#metodo-sert" className="hover:text-white">Método SERT</a>
+              <a href="#palestras" className="hover:text-white">Fundadora</a>
             </nav>
           </div>
 
           <a
             href="/contrate-nossos-servicos"
-            className="hidden items-center gap-2 text-[14px] font-medium text-[var(--ink)] md:inline-flex"
+            className="hidden items-center gap-2 rounded-full border border-white/14 bg-white/[0.04] px-5 py-2 text-[14px] font-medium text-white md:inline-flex"
           >
             Contrate nossos serviços
             <ArrowRight className="h-4 w-4" />
@@ -330,90 +346,242 @@ export default function Home() {
 
       <section
         id="top"
-        className="relative overflow-hidden bg-[radial-gradient(circle_at_left_top,rgba(191,233,237,0.34),transparent_20%),radial-gradient(circle_at_center,rgba(255,255,255,0.9),transparent_44%),radial-gradient(circle_at_left_bottom,rgba(220,225,230,0.88),transparent_34%),linear-gradient(135deg,#f2f6f8_0%,#f9fbfc_46%,#edf1f4_100%)]"
+        className="premium-hero relative overflow-hidden bg-[linear-gradient(130deg,#04101d_0%,#07172a_42%,#0a2630_100%)] text-white"
       >
-        <div className="mx-auto max-w-[1360px] px-5 pb-18 pt-28 md:px-10 md:pb-18 md:pt-32">
-          <div className="mx-auto max-w-[1120px] text-center">
-            {/* <div className="inline-flex items-center gap-2.5 rounded-full border border-[rgba(11,15,33,0.08)] bg-white px-3.5 py-1.5 text-[11px] font-medium uppercase tracking-[0.11em] text-[var(--muted)] shadow-[0_10px_25px_rgba(13,17,35,0.03)]">
-              <span className="h-2.5 w-2.5 rounded-full bg-[var(--soft-accent)]" />
-              Inteligência Organizacional
-            </div> */}
+        <div className="mx-auto max-w-[1460px] px-5 pb-24 pt-24 md:px-8 md:pb-24 md:pt-30 xl:px-10">
+          <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,0.84fr)_minmax(0,1.16fr)] lg:gap-2">
+            <div className="relative z-10 max-w-[640px] lg:-translate-y-10 xl:-translate-y-12">
+              <div className="section-kicker text-[var(--soft-accent)]">
+                <span className="section-kicker-line bg-[var(--soft-accent)]" />
+                Consultoria em saúde mental
+              </div>
 
-            <h1 className="mx-auto mt-10 max-w-[1120px] text-[1.9rem] font-semibold leading-[1.02] tracking-[0] text-[var(--ink)] md:text-[3.4rem]">
-              <span className="block">Saúde Mental Organizacional, Liderança</span>
-              <span className="block">e Desenvolvimento para Empresas</span>
-              <span className="block">
-                que querem crescer com{" "} <br />
-                <span className="hero-people-text">Pessoas Saudáveis</span>
-              </span>
-            </h1>
+              <h1 className="mt-8 max-w-[620px] font-[var(--font-cormorant)] text-[3rem] leading-[0.95] tracking-[-0.05em] text-white md:text-[4.8rem]">
+                <span className="block">Transformamos</span>
+                <span className="block text-[var(--soft-accent)]">pessoas.</span>
+                <span className="mt-2 block">Fortalecemos</span>
+                <span className="block text-[var(--accent)]">organizações.</span>
+              </h1>
 
-            <p className="mx-auto mt-8 max-w-[760px] text-[1.15rem] leading-[1.75] text-[var(--muted)] md:text-[1.15rem]">
-              Transformamos relações, fortalecemos lideranças e desenvolvemos ambientes
-              organizacionais mais saudáveis através do Método SERT.
-            </p>
+              <p className="mt-8 max-w-[560px] text-[1.05rem] leading-[1.85] text-white/72 md:text-[1.14rem]">
+                Soluções estratégicas em saúde mental organizacional para promover bem-estar,
+                reduzir riscos psicossociais e impulsionar resultados sustentáveis.
+              </p>
 
-            <div className="hero-orbit mx-auto mt-10 max-w-[850px] px-6 pb-18 pt-10 md:px-10">
-              <div className="relative z-10 mx-auto flex max-w-[470px] flex-col gap-4 sm:flex-row sm:justify-center">
+              <div className="mt-10 flex max-w-[560px] flex-col gap-4 sm:flex-row sm:flex-wrap">
                 <a
                   href="https://wa.me/5511976222228?text=Ol%C3%A1%21%20Quero%20solicitar%20um%20diagn%C3%B3stico%20para%20minha%20empresa."
-                  className="inline-flex h-[3.35rem] items-center justify-center rounded-full bg-[#090c1d] px-8 text-[0.98rem] font-medium text-white shadow-[0_16px_32px_rgba(9,12,29,0.2)]"
+                  className="inline-flex h-[3.7rem] items-center justify-center gap-3 rounded-full bg-[var(--accent)] px-7 text-[0.95rem] font-semibold uppercase tracking-[0.08em] text-[#04101d] shadow-[0_18px_42px_rgba(10,151,166,0.28)]"
                 >
-                  Solicitar Diagnóstico
+                  <Activity className="h-5 w-5" />
+                  Agendar Diagnóstico
                 </a>
                 <a
                   href="/contrate-nossos-servicos"
-                  className="inline-flex h-[3.35rem] items-center justify-center rounded-full border border-[rgba(11,15,33,0.1)] bg-white/88 px-8 text-[0.98rem] font-medium text-[var(--ink)] shadow-[0_10px_22px_rgba(255,255,255,0.55)]"
+                  className="inline-flex h-[3.7rem] items-center justify-center gap-3 rounded-full border border-white/18 bg-white/[0.03] px-7 text-[0.95rem] font-semibold uppercase tracking-[0.08em] text-white"
                 >
-                  Agendar Conversa
+                  <ArrowRight className="h-5 w-5" />
+                  Conheça Nossas Soluções
                 </a>
+              </div>
+            </div>
+
+            <div className="relative z-10 lg:-ml-10 lg:-mr-24 lg:-translate-y-20">
+              <div
+                className="premium-hero-visual mx-auto max-w-[860px] lg:w-[124%] lg:max-w-none"
+                role="img"
+                aria-label="Profissionais participando de uma reunião corporativa"
+              >
+                <svg viewBox="0 0 468 336" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient
+                      id="hero-image-alpha-x"
+                      x1="0"
+                      y1="0"
+                      x2="468"
+                      y2="0"
+                      gradientUnits="userSpaceOnUse"
+                    >
+                      <stop offset="0" stopColor="black" />
+                      <stop offset="0.2" stopColor="white" />
+                      <stop offset="0.7" stopColor="white" />
+                      <stop offset="0.92" stopColor="black" />
+                      <stop offset="1" stopColor="black" />
+                    </linearGradient>
+                    <linearGradient
+                      id="hero-image-alpha-y"
+                      x1="0"
+                      y1="0"
+                      x2="0"
+                      y2="336"
+                      gradientUnits="userSpaceOnUse"
+                    >
+                      <stop offset="0" stopColor="black" />
+                      <stop offset="0.15" stopColor="white" />
+                      <stop offset="0.68" stopColor="white" />
+                      <stop offset="0.94" stopColor="black" />
+                      <stop offset="1" stopColor="black" />
+                    </linearGradient>
+                    <filter
+                      id="hero-image-edge-soften"
+                      x="-20%"
+                      y="-20%"
+                      width="140%"
+                      height="140%"
+                    >
+                      <feGaussianBlur stdDeviation="6" />
+                    </filter>
+                    <mask
+                      id="hero-image-vertical-fade"
+                      x="-20"
+                      y="-20"
+                      width="508"
+                      height="376"
+                      maskUnits="userSpaceOnUse"
+                    >
+                      <rect x="-20" y="-20" width="508" height="376" fill="url(#hero-image-alpha-y)" />
+                    </mask>
+                    <mask
+                      id="hero-image-mask"
+                      x="-20"
+                      y="-20"
+                      width="508"
+                      height="376"
+                      maskUnits="userSpaceOnUse"
+                    >
+                      <path
+                        d="M264 4C205 36 165 96 126 155C88 213 62 260 10 302C3 308-4 313-12 318V332H464V4H264Z"
+                        fill="url(#hero-image-alpha-x)"
+                        filter="url(#hero-image-edge-soften)"
+                        mask="url(#hero-image-vertical-fade)"
+                      />
+                    </mask>
+                    <linearGradient id="hero-image-tint" x1="0" y1="0" x2="1" y2="0">
+                      <stop offset="0" stopColor="#04101d" stopOpacity="0.92" />
+                      <stop offset="0.32" stopColor="#04101d" stopOpacity="0.46" />
+                      <stop offset="0.64" stopColor="#07172a" stopOpacity="0.04" />
+                      <stop offset="1" stopColor="#04101d" stopOpacity="0.2" />
+                    </linearGradient>
+                    <linearGradient id="hero-image-bottom" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0.55" stopColor="#04101d" stopOpacity="0" />
+                      <stop offset="1" stopColor="#04101d" stopOpacity="0.9" />
+                    </linearGradient>
+                    <linearGradient
+                      id="hero-curve-stroke"
+                      x1="10"
+                      y1="302"
+                      x2="264"
+                      y2="0"
+                      gradientUnits="userSpaceOnUse"
+                    >
+                      <stop offset="0" stopColor="#0a97a6" stopOpacity="0" />
+                      <stop offset="0.12" stopColor="#0a97a6" stopOpacity="0.54" />
+                      <stop offset="0.5" stopColor="#8fd9df" stopOpacity="0.94" />
+                      <stop offset="0.88" stopColor="#0a97a6" stopOpacity="0.58" />
+                      <stop offset="1" stopColor="#0a97a6" stopOpacity="0" />
+                    </linearGradient>
+                    <linearGradient
+                      id="hero-curve-end-alpha"
+                      x1="0"
+                      y1="0"
+                      x2="0"
+                      y2="336"
+                      gradientUnits="userSpaceOnUse"
+                    >
+                      <stop offset="0" stopColor="black" />
+                      <stop offset="0.14" stopColor="white" />
+                      <stop offset="0.8" stopColor="white" />
+                      <stop offset="1" stopColor="black" />
+                    </linearGradient>
+                    <mask
+                      id="hero-curve-end-mask"
+                      x="-120"
+                      y="0"
+                      width="600"
+                      height="336"
+                      maskUnits="userSpaceOnUse"
+                    >
+                      <rect x="-120" width="600" height="336" fill="url(#hero-curve-end-alpha)" />
+                    </mask>
+                    <filter id="hero-curve-fade" x="-50%" y="-50%" width="200%" height="200%">
+                      <feGaussianBlur stdDeviation="22" />
+                    </filter>
+                  </defs>
+
+                  <g mask="url(#hero-image-mask)">
+                    <image
+                      href="https://images.unsplash.com/photo-1577962917302-cd874c4e31d2?auto=format&fit=crop&w=1600&q=85"
+                      width="468"
+                      height="336"
+                      preserveAspectRatio="xMaxYMid slice"
+                    />
+                    <rect width="468" height="336" fill="url(#hero-image-tint)" />
+                    <path
+                      d="M360 -100C315-68 288-35 264-8C205 36 165 96 126 155C88 213 62 260 10 302C3 308-4 313-12 318C-45 342-75 363-112 382"
+                      fill="none"
+                      stroke="#04101d"
+                      strokeOpacity="0.88"
+                      strokeWidth="82"
+                      filter="url(#hero-curve-fade)"
+                    />
+                    <rect width="468" height="336" fill="url(#hero-image-bottom)" />
+                  </g>
+
+                  <g mask="url(#hero-curve-end-mask)">
+                    <path
+                      d="M226 0C177 34 136 92 98 150C62 205 37 249-8 285"
+                      fill="none"
+                      stroke="url(#hero-curve-stroke)"
+                      strokeOpacity="0.58"
+                      strokeWidth="1"
+                      strokeLinecap="round"
+                    />
+                    <path
+                      d="M264 0C205 36 165 96 126 155C88 213 62 260 10 302"
+                      fill="none"
+                      stroke="url(#hero-curve-stroke)"
+                      strokeWidth="2.2"
+                      strokeLinecap="round"
+                    />
+                  </g>
+                </svg>
               </div>
             </div>
           </div>
         </div>
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-[linear-gradient(180deg,rgba(245,248,250,0),rgba(247,249,251,0.82)_62%,rgba(250,250,251,0.96)_86%,#fbfbfc_100%)]" />
       </section>
 
-      <section id="manifesto" className="bg-white">
-        <div className="mx-auto max-w-[1360px] px-5 pb-24 pt-10 md:px-10 md:pb-30 md:pt-12">
-          <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,620px)_minmax(0,1fr)]">
-            <div className="rounded-[2rem] bg-[linear-gradient(145deg,#08111d_0%,#0c2030_58%,#123548_100%)] px-7 py-8 text-white shadow-[0_28px_70px_rgba(8,17,29,0.14)] md:px-9 md:py-10">
-              <div className="section-kicker text-[#7fe3eb]">
-                <span className="section-kicker-line bg-[#7fe3eb]" />
-                Bloco de dores
-              </div>
-              <h2 className="mt-8 text-[2.2rem] font-semibold leading-[1.02] tracking-[-0.06em] md:text-[3.1rem]">
-                Sua empresa enfrenta:
-              </h2>
-              <div className="mt-10 grid gap-4 sm:grid-cols-2">
-                {painPoints.map((pain) => (
-                  <div
-                    key={pain}
-                    className="flex items-center gap-3 rounded-[1rem] border border-white/10 bg-white/[0.06] px-4 py-4"
-                  >
-                    <CheckCircle2 className="h-5 w-5 shrink-0 text-[#7fe3eb]" />
-                    <span className="text-[0.98rem] leading-6 text-white/88">{pain}</span>
-                  </div>
-                ))}
+      <section
+        id="manifesto"
+        className="relative overflow-hidden bg-[radial-gradient(circle_at_82%_18%,rgba(10,151,166,0.1),transparent_28%),linear-gradient(135deg,#f8fafb_0%,#f2f7f7_58%,#eaf3f3_100%)] py-24 text-[var(--ink)] md:min-h-[760px] md:py-30"
+      >
+        <div className="mx-auto max-w-[1360px] px-5 md:px-10">
+          <div>
+            <div className="border-b border-[rgba(11,15,33,0.1)] pb-10 md:pb-12">
+              <div className="max-w-[760px]">
+                <div className="section-kicker text-[var(--accent)]">
+                  <span className="section-kicker-line bg-[var(--accent)]" />
+                  Frentes de atuação
+                </div>
+                <h2 className="mt-7 text-[2.7rem] font-semibold leading-[0.98] tracking-[-0.075em] text-[var(--ink)] md:text-[4rem]">
+                  Soluções conectadas para diagnosticar, desenvolver e transformar.
+                </h2>
               </div>
             </div>
 
-            <div className="max-w-[760px] lg:pl-8">
-              <div className="section-kicker">
-                <span className="section-kicker-line" />
-                Diagnóstico organizacional
-              </div>
-              <h2 className="mt-8 max-w-[620px] text-[2.45rem] font-semibold leading-[0.98] tracking-[-0.08em] md:text-[3.35rem]">
-                Problemas organizacionais raramente começam apenas nos processos.
-              </h2>
-              <div className="mt-10 max-w-[760px] space-y-6 text-[1.06rem] leading-[1.9] font-medium text-[rgba(106,116,138,0.98)]">
-                <p>Muitas vezes começam nas relações.</p>
-                <p className="max-w-[690px] text-[1rem] leading-[1.82] text-[var(--muted)]">
-                  Quando a comunicação falha, os conflitos aumentam, a liderança se desgasta e o
-                  desempenho coletivo perde consistência. Olhar para as relações e para a saúde
-                  emocional da organização é o primeiro passo para transformar o ambiente.
-                </p>
-              </div>
+            <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+              {heroSolutionCards.map(({ title, description, Icon }) => (
+                <article
+                  key={title}
+                  className="premium-solution-card px-6 py-8 text-[var(--ink)] lg:min-h-[310px]"
+                >
+                  <div className="flex h-13 w-13 items-center justify-center rounded-full border border-[rgba(10,151,166,0.2)] bg-[rgba(10,151,166,0.08)] text-[var(--accent)]">
+                    <Icon className="h-6 w-6" />
+                  </div>
+                  <h3 className="mt-6 text-[1.16rem] font-semibold leading-6">{title}</h3>
+                  <p className="mt-4 text-[0.97rem] leading-7 text-[var(--muted)]">{description}</p>
+                </article>
+              ))}
             </div>
           </div>
         </div>
