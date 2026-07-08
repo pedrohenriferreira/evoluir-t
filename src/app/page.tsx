@@ -370,7 +370,7 @@ export default function Home() {
 
               <div className="mt-10 flex max-w-[560px] flex-col gap-4 sm:flex-row sm:flex-wrap">
                 <a
-                  href="https://wa.me/5511976222228?text=Ol%C3%A1%21%20Quero%20solicitar%20um%20diagn%C3%B3stico%20para%20minha%20empresa."
+                  href="https://wa.me/5511918289651?text=Ol%C3%A1%21%20Quero%20solicitar%20um%20diagn%C3%B3stico%20para%20minha%20empresa."
                   className="inline-flex h-[3.7rem] items-center justify-center gap-3 rounded-full bg-[var(--accent)] px-7 text-[0.95rem] font-semibold uppercase tracking-[0.08em] text-[#04101d] shadow-[0_18px_42px_rgba(10,151,166,0.28)]"
                 >
                   <Activity className="h-5 w-5" />
@@ -1137,7 +1137,7 @@ export default function Home() {
 
             <div className="mt-10">
               <a
-                href="https://wa.me/5511976222228?text=Ol%C3%A1%21%20Quero%20agendar%20um%20diagn%C3%B3stico%20organizacional."
+                href="https://wa.me/5511918289651?text=Ol%C3%A1%21%20Quero%20agendar%20um%20diagn%C3%B3stico%20organizacional."
                 className="inline-flex h-[58px] items-center justify-center rounded-full bg-[#0ea8ab] px-9 text-[0.96rem] font-medium text-[#030f18] shadow-[0_14px_34px_rgba(14,168,171,0.23)]"
               >
                 Agendar Diagnóstico

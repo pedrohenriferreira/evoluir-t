@@ -15,7 +15,7 @@ const serviceOptions = [
     title: "Contratar uma palestra",
     description:
       "Leve para sua organização uma experiência profunda sobre pessoas, cultura, liderança e saúde mental no trabalho.",
-    href: "https://wa.me/5511976222228?text=Ol%C3%A1%21%20Quero%20contratar%20uma%20palestra%20da%20Evoluir-T.",
+    href: "https://wa.me/5511918289651?text=Ol%C3%A1%21%20Quero%20contratar%20uma%20palestra%20da%20Evoluir-T.",
     cta: "Quero contratar palestra",
     Icon: Mic,
     highlights: [
